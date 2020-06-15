@@ -1,0 +1,145 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Home Page</title> 
+    <style type="text/css" media="screen">
+        body{
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+        nav {
+      background-color: rgb(194, 194, 194);
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+      color: white;
+            font-size: 30px;
+      height: 10vh;
+    }
+
+    nav:hover {
+      -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(92, 29, 29, 0.15) 0px -10px 20px;
+    }
+    .navLi{
+      padding: 0 5px;
+    
+    }
+
+    h4 {
+      align-self: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      padding: 20px;
+      margin: 10px;
+      width: 30vw;
+    }
+    a{
+      color: black;
+      text-decoration: none;
+    }
+            .mainDiv {
+                background-color: rgb(255, 255, 255);
+                justify-content:center ;
+            }
+            
+            input{
+                background-color: white;
+                width: 60vw;
+                padding: 20px;
+                margin: 20px;
+            }
+            .photoInput{
+                height: 10vh;
+                background-color: gainsboro;
+            }
+            .addButton{
+                font-size: 30px;
+                width: 10vw;
+                height: 8vh;
+                margin: 20px;
+                background-color: blue;
+                color: white;
+            }
+            h2{
+                border-bottom: 3px solid black;
+            }
+            
+        </style>
+</head> 
+  
+<body> 
+    <nav>
+        <a href="/"> Home</a>
+        <div class="navLi">
+          <a href="/add_direct">Forms</a>
+          <a href="/display">Records</a>
+        </div>
+      </nav>
+<div class="mainDiv">
+    
+    <form method="post" action="/add_direct" >
+        <h2>Fill Post</h2>
+        <input type="text" placeholder="Enter Name" name="user_name" >
+        <br>
+        <input type="text" placeholder="Enter Product" name="user_product" >
+
+        <br>
+
+        <input type="number" placeholder="Enter Price" name="user_price" >
+
+        <br>
+        <button class="addButton"  submit="/add_direct" >SUBMIT </button>
+    </form>
+</div>
+
+</body> 
+  
+</html>
+
+
+
+<!-- <!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Home Page</title> 
+    <style type="text/css" media="screen"> 
+        body { 
+            background-color: skyblue; 
+            text-decoration-color: white; 
+            font-size:4em;  
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input{
+            padding: 20px;
+            margin: 10px;
+            width: 50vw;
+        }
+    </style> 
+</head> 
+  
+<body> 
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="photos">
+    </form>
+</body> 
+  
+</html> -->

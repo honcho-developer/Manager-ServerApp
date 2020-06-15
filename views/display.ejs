@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<style type="text/css" media="screen">
+    ul {
+            background-color: rgb(255, 255, 255);
+            display: flex;
+
+            justify-content: space-between;
+            padding: 20px;
+            list-style: none;
+            border-bottom: 5px solid black;
+    }
+
+    li {
+            padding: 10px;
+    }
+
+    .mainDiv {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+    }
+
+    .searchBar {
+            width: 90%;
+            height: 5vh;
+            font-size: 15px;
+            border-bottom: 3px solid black;
+    }
+
+    a {
+            text-decoration: none;
+    }
+
+    h3 {
+            align-content: center;
+            border-bottom: 3px solid black 10px;
+    }
+</style>
+<input class="searchBar" type="text" placeholder="Search For Products">
+<div class="mainDiv" >
+
+    <h3>Records Found</h3>
+
+    
+
+    <ul>
+
+            <li> {{user_name}}</li>
+
+            <li> {{user_product}}</li>
+                   
+                    <li> {{user_price}}</li>
+            <li>
+                    <a href='/edit'>Edit</a> |
+
+                    <a href='delete/{{_id}}'>Delete</a>
+            </li>
+
+    </ul>
+   
+</div>
+</body>
+</html>
