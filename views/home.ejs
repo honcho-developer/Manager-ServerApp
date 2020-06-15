@@ -9,7 +9,7 @@
             align-items: center;
         }
         nav {
-      background-color: rgb(194, 194, 194);
+      background-color: whitesmoke;
       display: flex;
       justify-content: space-between;
       padding: 40px;
@@ -22,11 +22,7 @@
       -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
         inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
       -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(92, 29, 29, 0.15) 0px -10px 20px;
+       
     }
     .navLi{
       padding: 0 5px;
@@ -101,6 +97,8 @@
         <br>
 
         <input type="number" placeholder="Enter Price" name="user_price" >
+        <br>
+        <input class="photoInput" type="file" name="user_images" method="post" enctype="multipart/form-data" required />
 
         <br>
         <button class="addButton"  submit="/add_direct" >SUBMIT </button>

@@ -4,17 +4,17 @@ const directData = new mongoose.Schema({
   user_name: String,
   user_product: String,
   user_price: String,
-  // user_images: {
-  //   path: {
-  //     type: String,
-  //     required: true,
-  //     trim: true,
-  //   },
-  //   originalname: {
-  //     type: String,
-  //     required: true,
-  //   },
-  // },
+  user_images: {
+    path: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    originalname: {
+      type: String,
+      required: true,
+    },
+  },
   date: { type: Date, default: Date.now }
 });
 

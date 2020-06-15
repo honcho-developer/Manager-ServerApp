@@ -5,16 +5,21 @@
     <style type="text/css" media="screen">
         body{
             padding: 0;
+            align-content: center;
             margin: 0;
         }
             .mainDiv {
                 background-color: rgb(255, 255, 255);
-                justify-content:center ;
+                display: flex;
+            flex-direction: column;
+            align-items: center;
+               
             }
             
             input{
                 background-color: white;
-                width: 60vw;
+               
+                width: 50vw;
                 padding: 20px;
                 margin: 20px;
             }
@@ -31,7 +36,9 @@
                 color: white;
             }
             h2{
-                border-bottom: 3px solid black;
+                padding-left: 250px;
+                font-size: 50px;
+                align-items: center;
             }
             
         </style>
@@ -40,6 +47,8 @@
 <body> 
    
 <div class="mainDiv">
+
+    
     
     <form method="post" action="/login" >
         <h2>Sign Up </h2>
@@ -52,6 +61,7 @@
         <br>
         <button class="addButton"  submit="/login" >SUBMIT </button>
     </form>
+    
 </div>
 
 </body> 
