@@ -1,6 +1,7 @@
 var express = require('express'); 
 var app = express(); 
 const flash = require("req-flash");
+const path = require('path')
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -11,7 +12,7 @@ const db = process.env.MONGODB_URL;
 
 // Set EJS as templating engine 
 app.set('view engine', 'ejs'); 
-
+app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(bodyParser.json());
@@ -147,7 +148,8 @@ app.put("/edit/:id", (req, res) => {
     }
   });
 });
-  var server = app.listen(4000, function(){ 
-    console.log('listining to port 4000') 
-  }); 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
+});
   
