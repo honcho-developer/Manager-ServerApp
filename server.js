@@ -4,7 +4,6 @@ const flash = require("req-flash");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const cool = require('cool-ascii-faces');
 var Direct = require('./models/directSchema');
 const User = require("./models/adminSchema");
 const db = process.env.MONGODB_URL;
@@ -17,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-express().get('/cool', (req, res) => res.send(cool()))
+
 
 
 mongoose
