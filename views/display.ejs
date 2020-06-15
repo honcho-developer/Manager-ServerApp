@@ -12,39 +12,21 @@ body{
         padding: 0;
         margin: 0;
 }
-    ul {
-            background-color: rgb(255, 255, 255);
-            display: flex;
-
-            justify-content: space-between;
-            padding: 20px;
-            list-style: none;
-            border-bottom: 5px solid black;
-    }
-
-    li {
-            padding: 10px;
-    }
+    
     nav {
-      background-color: whitesmoke;
+        background-color: black;
       display: flex;
       justify-content: space-between;
       padding: 40px;
       color: white;
-            font-size: 30px;
+      font-size: 30px;
       height: 10vh;
     }
-
-    nav:hover {
-     box-shadow: rgba(255, 254, 254, 0.1) 0px 2px 15px,
-        inset rgba(255, 255, 255, 0) 0px -10px 20px;
-    
-       
+    a{
+      color: white;
+      text-decoration: none;
     }
-    .navLi{
-      padding: 0 5px;
-    
-    }
+   
 
     .mainDiv {
             display: flex;
@@ -130,8 +112,7 @@ body{
             {userImmage}
         </div>
         <a href='/edit'>Edit</a> |
-
-                    <a href='delete/{{_id}}'>Delete</a>
+         <a href='delete/{{_id}}'>Delete</a>
     </div>
 
    
