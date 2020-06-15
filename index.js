@@ -4,6 +4,7 @@ const flash = require("req-flash");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cool = require('cool-ascii-faces');
 var Direct = require('./models/directSchema');
 const User = require("./models/adminSchema");
 const db = process.env.MONGODB_URL;
