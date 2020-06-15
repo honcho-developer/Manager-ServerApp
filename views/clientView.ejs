@@ -9,25 +9,14 @@
             align-items: center;
         }
         nav {
-      background-color: rgb(194, 194, 194);
+      background-color: black;
       display: flex;
       justify-content: space-between;
       padding: 40px;
-      color: white;
             font-size: 30px;
       height: 10vh;
     }
 
-    nav:hover {
-      -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(92, 29, 29, 0.15) 0px -10px 20px;
-    }
     .navLi{
       padding: 0 5px;
     
@@ -36,41 +25,60 @@
         
     }
     h3 {
-        display: flex;
-      align-items: center;
+    text-align: center;
       font-size: 40px;
     }
-    .search{
-        display: flex;
-    }
+   
     input {
       padding: 20px;
       margin: 10px;
       width: 60vw;
       height: 4vh;
+      border: none;
+      border-bottom: 1px solid black;
        
     }
     a{
-      color: black;
+      color: white;
       text-decoration: none;
     }
-        
+
+    .search{
+        padding-top: 50px;
+    }
+    .searchBar {
+            width: 70%;
+            height: 4vh;
+            font-size: 15px;
+            padding: 10px;
+            margin: 20px;
+            background-color: lightblue;
+            border: none;
+    }
+    .searchButton{
+    width: 9vw;
+    background-color: lightblue;
+    border: none;
+
+    height: 7vh;
+} 
         .container{
-            background-color: aqua;
+            background-color: rgba(216, 218, 218, 0.651);
             width: 40vh;
             height: 40vh;
             padding: 20px;
             margin: 20px;
-            
+            color: white;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
         } 
-.searchButton{
-    width: 9vw;
-    background-color: lightblue;
-    border: none;
-    padding: 20px;
-    margin: 10px;
-    height: 10vh;
-}  
+
         </style>
 </head> 
   
@@ -80,7 +88,10 @@
         
           <a href="./login">Admin</a>
       </nav>
+      
+
 <div class="client">
+    
     <div class="search">
         <input class="searchBar" type="text" placeholder="Search For Products">
         <button class="searchButton">Search</button>

@@ -100,22 +100,27 @@ app.get("/add_direct", function (req, res) {
     }
   });
 });
-app.post("/add_direct", async (req, res) => {
-  const { user_name, user_product, user_price, user_images } = req.body;
-  const newDirect = await new Direct({
-    user_name,
-    user_product,
-    user_price,
-    user_images
-  });
-  newDirect
-    .save()
-    .then((newRes) => {
-      res.send(newRes);
+app.post("/add_direct", function (req, res){
+  
+    console.log(req.body);
+
+    const mybodydata = {
+        user_name: req.body.user_name,
+        user_product: req.body.user_product,
+        user_price: req.body.user_price,
+        
+    }
+    const direct = Direct(mybodydata);
+    //var data = UsersModel(req.body);
+    direct.save(function(err) {
+        if (err) {
+
+            res.render('home', { message: 'User registered not successfully!' });
+        } else {
+
+            res.render('home', { message: 'User registered successfully!' });
+        }
     })
-    .catch((err) => {
-      console.log("Error", err);
-    });
 });
 
 app.get("/display", function (req, res) {

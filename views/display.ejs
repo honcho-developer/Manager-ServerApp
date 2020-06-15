@@ -8,6 +8,10 @@
 <body>
     
 <style type="text/css" media="screen">
+body{
+        padding: 0;
+        margin: 0;
+}
     ul {
             background-color: rgb(255, 255, 255);
             display: flex;
@@ -21,50 +25,115 @@
     li {
             padding: 10px;
     }
+    nav {
+      background-color: whitesmoke;
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+      color: white;
+            font-size: 30px;
+      height: 10vh;
+    }
+
+    nav:hover {
+     box-shadow: rgba(255, 254, 254, 0.1) 0px 2px 15px,
+        inset rgba(255, 255, 255, 0) 0px -10px 20px;
+    
+       
+    }
+    .navLi{
+      padding: 0 5px;
+    
+    }
 
     .mainDiv {
             display: flex;
             flex-direction: column;
             width: 100%;
     }
-
-    .searchBar {
-            width: 90%;
-            height: 5vh;
-            font-size: 15px;
-            border-bottom: 3px solid black;
-    }
-
     a {
             text-decoration: none;
     }
-
-    h3 {
-            align-content: center;
-            border-bottom: 3px solid black 10px;
+    .searchBar {
+            width: 70%;
+            height: 7vh;
+            font-size: 15px;
+            margin: 20px;
+            border-bottom: 3px solid black;
     }
+
+   
+    .searchBar {
+            width: 70%;
+            height: 4vh;
+            font-size: 15px;
+            padding: 10px;
+            margin: 20px;
+            background-color: lightblue;
+            border: none;
+    }
+    .searchButton{
+    width: 9vw;
+    background-color: lightblue;
+    border: none;
+
+    height: 7vh;
+}  
+    h2 {        
+            text-align: center;
+            font-size: 40px;
+            
+    }
+    .container{
+            background-color: rgba(216, 218, 218, 0.651);
+            width: 40vh;
+            height: 40vh;
+            padding: 20px;
+            margin: 20px;
+            color: white;
+            -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+      box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+        } 
 </style>
-<input class="searchBar" type="text" placeholder="Search For Products">
+<nav>
+        <a href="/"> Home</a>
+        <div class="navLi">
+          <a href="/add_direct">Forms</a>
+          <a href="/display">Records</a>
+        </div>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <div class="search">
+        <input class="searchBar" type="text" placeholder="Search For Products">
+        <button class="searchButton">Search</button>
+    </div>
+<br>
+<br>
+<br>
 <div class="mainDiv" >
 
-    <h3>Records Found</h3>
+    <h2>Records Found</h2>
 
-    
-
-    <ul>
-
-            <li> {{user_name}}</li>
-
-            <li> {{user_product}}</li>
-                   
-                    <li> {{user_price}}</li>
-            <li>
-                    <a href='/edit'>Edit</a> |
+    <div class="container">
+        <p>{{user_name}}</p>
+        <p>{{user_product}}</p>
+        <li> {{user_price}}</li>
+        <div>
+            {userImmage}
+        </div>
+        <a href='/edit'>Edit</a> |
 
                     <a href='delete/{{_id}}'>Delete</a>
-            </li>
+    </div>
 
-    </ul>
    
 </div>
 </body>
