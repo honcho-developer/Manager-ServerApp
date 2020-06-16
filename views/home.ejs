@@ -85,9 +85,9 @@
       </nav>
 <div class="mainDiv">
     
-    <form method="post" action="/add_direct" >
-        <h2>Add Post</h2>
-        <input type="text" placeholder="Enter Name" name="user_name" >
+    <form method="post" enctype="multipart/form-data" action="/add_direct" >
+        <h2>Add New Post</h2>
+        <input type="text" placeholder="Product Name" name="user_name" >
         <br>
         <input type="text" placeholder="Product Description" name="user_product" >
 
@@ -95,7 +95,7 @@
 
         <input type="number" placeholder="Enter Price" name="user_price" >
         <br>
-        <input class="photoInput" type="file"  name="photo" enctype="multipart/form-data"   />
+        <input class="photoInput" type="file"  name="photo"    />
 
         <br>
         <button class="addButton"  submit="/add_direct" >Post </button>
@@ -106,35 +106,3 @@
   
 </html>
 
-
-
-<!-- <!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Home Page</title> 
-    <style type="text/css" media="screen"> 
-        body { 
-            background-color: skyblue; 
-            text-decoration-color: white; 
-            font-size:4em;  
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        input{
-            padding: 20px;
-            margin: 10px;
-            width: 50vw;
-        }
-    </style> 
-</head> 
-  
-<body> 
-    <form action="/" method="post" enctype="multipart/form-data">
-        <input type="file" name="photos">
-    </form>
-</body> 
-  
-</html> -->

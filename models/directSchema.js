@@ -1,20 +1,10 @@
 const mongoose = require("mongoose");
 
 const directData = new mongoose.Schema({
-  user_name: String,
-  user_product: String,
-  user_price: String,
-  // photo: {
-  //   path: {
-  //     type: String,
-  //     required: true,
-  //     trim: true,
-  //   },
-  //   originalname: {
-  //     type: String,
-  //     required: true,
-  //   },
-  // },
+  user_name: { type: String, required: true   },
+  user_product: { type: String, required: true   },
+  user_price: { type: String, required: true   },
+  photo: { type: String, required: true   },
   date: { type: Date, default: Date.now }
 });
 

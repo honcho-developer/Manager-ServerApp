@@ -1,137 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-<style type="text/css" media="screen">
-body{
+  </head>
+  <body>
+    <style type="text/css" media="screen">
+      body {
         padding: 0;
         margin: 0;
-}
-    
-    nav {
+      }
+
+      nav {
         background-color: black;
-      display: flex;
-      justify-content: space-between;
-      padding: 40px;
-      color: white;
-      font-size: 30px;
-      height: 10vh;
-    }
-   
+        display: flex;
+        justify-content: space-between;
+        padding: 40px;
+        color: white;
+        font-size: 30px;
+        height: 10vh;
+      }
 
-    .mainDiv {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-    }
-    
-    .searchBar {
-            width: 70%;
-            height: 7vh;
-            font-size: 15px;
-            margin: 20px;
-            border-bottom: 3px solid black;
-    }
+      .mainDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
 
-   
-    .searchBar {
-            width: 85%;
-            height: 4vh;
-            font-size: 15px;
-            padding: 10px;
-            margin: 20px;
-            background-color: rgb(255, 255, 255);
-            border: none;
-            border-bottom: 1px solid black;
-    }
-    .searchButton{
-    width: 9vw;
-    background-color: rgb(28, 198, 255);
-    border: none;
-    height: 7vh;
-}  
-    h2 {        
-            text-align: center;
-            font-size: 40px;
-            
-    }
-    .container{
-            background-color: rgba(255, 255, 255, 0.986);
-            display: flex;
-                border: 0.1px solid grey;
-                border-radius: 20px;
-            flex-direction: column;
-            width: 40vw;
-            height: 40vh;
-            padding: 20px;
-            margin: 20px;
-            color: black;
-          
-        } 
-        .containerDiv{
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                
-        }
-        p{
-                padding: 0 15px;
-        }
-        a{
-                text-decoration: none;
-                padding: 0 15px;
-                font-size: 30px;
-                color: white;
-        }
-</style>
-<nav>
-        <a href="/"> Home</a>
-        <div class="navLi">
-          <a href="/add_direct">Post</a>
-          <a href="/display">Records</a>
-        </div>
-      </nav>
-      <br>
-      <br>
-      <br>
-      <div class="search">
-       
-        <input class="searchBar" value="" type="text" placeholder="Search For Products">
-        <button submit="./filter" class="searchButton">Search</button>
-    </div>
-<br>
-<br>
-<br>
-<div class="mainDiv" >
+      .searchBar {
+        width: 70%;
+        height: 7vh;
+        font-size: 15px;
+        margin: 20px;
+        border-bottom: 3px solid black;
+      }
+
+      .searchBar {
+        width: 85%;
+        height: 4vh;
+        font-size: 15px;
+        padding: 10px;
+        margin: 20px;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-bottom: 1px solid black;
+      }
+      .searchButton {
+        width: 9vw;
+        background-color: rgb(28, 198, 255);
+        border: none;
+        height: 7vh;
+      }
+      h2 {
+        text-align: center;
+        font-size: 40px;
+      }
+      .container {
+        background-color: rgba(255, 255, 255, 0.986);
+        display: flex;
+        border: 0.1px solid grey;
+        border-radius: 20px;
+        flex-direction: column;
+        width: 25%;
+        height: 57vh;
+        padding: 20px;
+        margin: 20px;
+        color: black;
+      }
+      .containerImage {
+        width: 22vw;
+        height: 30vh;
+      }
+      .containerDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      p {
         
-    <h2>Records Found</h2>
-    <div class="containerDiv">
+        padding: 0 15px;
+        font-size: 20px;
+      }
+      a {
+        text-decoration: none;
+        padding: 0 15px;
+        font-size: 30px;
+        color: white;
+      }
+    </style>
+    <nav>
+      <a href="/"> Home</a>
+      <div class="navLi">
+        <a href="/add_direct">Post</a>
+        <a href="/display">Records</a>
+      </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <div class="search">
+      <input
+        class="searchBar"
+        name="search"
+        type="text"
+        placeholder="Search For Products"
+      />
+      <button onclick="search()" submit="./filter" class="searchButton">
+        Search
+      </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="mainDiv">
+      <div class="containerDiv">
         <% users.forEach(function(user) { %>
-                <div class="container">
-        
-                        <p > <%=user.user_name%> </p>
-                        <p> <%=user.user_product%>  </p>
-                        <p> <%=user.user_price%> </p>
-                        <!-- <div>
-                            {userImmage}
-                        </div> -->
-                    <div>
-                        <a class="aDisplay" href='/edit/<%= user._id %>' style="color: orange;" >Edit</a> 
-                        <a class="aDisplay" href="deleteOne/<%= user._id %>" style="color: red;" >Delete</a>
-                    </div>
-                    </div>
-            <% }) %>
+        <div class="container">
+          <div>
+            <img src="imgUrlHere" />
+            <img class="containerImage" src="<%=user.photo%>" />
+          </div>
+          <div class="pText">
+            <p  ><%=user.user_name%></p>
+            <p><%=user.user_product%></p>
+            <p><%=user.user_price%></p>
+          </div>
+         
+
+          <div>
+            <a
+              class="aDisplay"
+              href="/edit/<%= user._id %>"
+              style="color: orange;"
+              >Edit</a
+            >
+            <a
+              class="aDisplay"
+              href="deleteOne/<%= user._id %>"
+              style="color: red;"
+              >Delete</a
+            >
+          </div>
+        </div>
+        <% }) %>
+      </div>
     </div>
- 
-
-   
-</div>
-
-
-</body>
+  </body>
 </html>

@@ -3,6 +3,7 @@ const app = express();
 const flash = require("req-flash");
 const path = require("path");
 const multer = require("multer");
+const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -13,9 +14,9 @@ const db = process.env.MONGODB_URL;
 
 // Set EJS as templating engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views",__dirname + "/views");
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -35,18 +36,34 @@ mongoose
     console.log({ err });
   });
 
+//UPLOAD IMAGE
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, new Date().toISOString() + file.originalname);
   },
 });
 
+const fileFilter = (req, file, cb) => {
+  //reject file type
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
 const upload = multer({
   storage: storage,
+  limits: {
+    fileSize: 1045 * 1045 * 5,
+  },
+  fileFilter: fileFilter,
 });
+
 app.post("/add", (req, res) => {
   upload(req, res, (err) => {
     if (err) {
@@ -55,18 +72,18 @@ app.post("/add", (req, res) => {
     res.send(req.file);
   });
 });
-app.get("/",  function (req, res) {
+app.get("/", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
       console.log(err);
     } else {
-      res.render("clientView", { users: users }, );
+      res.render("clientView", { users: users });
       console.log(users);
     }
   });
 });
 
-// require('./utils/utils')
+//SIGNUP
 app.get("/login", (req, res) => {
   User.find(function (err, users) {
     if (err) {
@@ -78,18 +95,33 @@ app.get("/login", (req, res) => {
   });
 });
 
-app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  console.log({ username, password });
-  User.findOne({ username, password }, (err, users) => {
-    if (users === req.body) {
-      res.send(users);
+app.post("/login", (req, res, next) => {
+  bcrypt.hash(req.body.password, 10, (err, hash) => {
+    if (err) {
+      return res.status(500).json({
+        err: err,
+      });
     } else {
-      res.render("home", { users: users });
-      console.error("User not found");
+      const user = new User({
+        email: req.body.email,
+        password: hash,
+      });
+      user
+      .save()
+      .then(result => {
+        console.log(result)
+        res.render("home", { req: req  }, );
+      })
+      .catch(err => {
+        console.log(err)
+        err.status(err).json({
+         err: err
+        })
+      })
     }
   });
 });
+
 app.get("/add_direct", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
@@ -100,13 +132,14 @@ app.get("/add_direct", function (req, res) {
     }
   });
 });
-app.post("/add_direct", function (req, res) {
-  console.log(req.body);
+app.post("/add_direct", upload.single("photo"), function (req, res) {
+  console.log(req.file);
 
   const mybodydata = {
     user_name: req.body.user_name,
     user_product: req.body.user_product,
     user_price: req.body.user_price,
+    photo: req.file.path,
   };
   const direct = Direct(mybodydata);
   //var data = UsersModel(req.body);
@@ -120,23 +153,27 @@ app.post("/add_direct", function (req, res) {
 });
 
 //FILTER FUNCTION
+// const search = (e) => {
+//   e.target.name
+//   console.log(search)
+// }
 
-// app.get("/filter", (req, res) => {
-//   process.env.MONGODB_URL.collection("directData")
-//     .find()
-//     .toArray((err, result) => {
-//       if (err) return console.log(err);
-//       // renders index.ejs
-//       res.render("index.ejs", { mydb: result });
-//     });
-// });
+// app.get('/filter', (req, res) => {
+
+//   const {db} = req.baseUrl
+//   db.collection('mydb').find().toArray((err, result) => {
+//     if (err) return console.log(err)
+//     // renders index.ejs
+//     res.render('index.ejs', {mydb: result})
+//   })
+// })
 
 app.get("/display", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
       console.log(err);
     } else {
-      res.render("display", { users: users }, );
+      res.render("display", { users: users });
       console.log(users);
     }
   });
@@ -154,14 +191,15 @@ app.delete("/deleteAll", (req, res) => {
 
 app.get("/deleteOne/:id", (req, res) => {
   console.log(req.params);
-  Direct.findByIdAndRemove(req.params.id, (err, removed) => {
-    if (err) {
-      return err;
-    } else {
+  Direct.findByIdAndRemove(req.params.id, ( removed) => {
+    if (removed) {
       res.send(removed);
-      renderFile('home')
+      
+    } else {
+      res.render('home');
     }
   });
+  
 });
 
 app.get("/edit/:id", function (req, res) {
@@ -171,23 +209,22 @@ app.get("/edit/:id", function (req, res) {
       console.log(err);
     } else {
       console.log(user);
-
       res.render("edit", { userDetail: user });
     }
   });
 });
-app.post("/edit/:id", (req, res) => {
-  console.log(req.params);
-  Direct.findByIdAndUpdate(req.params.id, req.body, (err, updated) => {
-    if (err) {
-      return err;
-    } else {
-      console.log(updated);
-      res.send(updated);
-      
-    }
+app.post('/edit/:id', function(req, res) {
+  Direct.findByIdAndUpdate(req.params.id, req.body, function(err) {
+      if (err) {
+          
+          res.render('edit/' + req.params.id);
+      } else {
+          
+          res.render('home');
+      }
   });
 });
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);

@@ -1,125 +1,124 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Client Page</title> 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Client Page</title>
     <style type="text/css" media="screen">
-        body{
-            padding: 0;
-            margin: 0;
-            align-items: center;
-        }
-        nav {
-      background-color: black;
-      display: flex;
-      justify-content: space-between;
-      padding: 40px;
-            font-size: 30px;
-      height: 10vh;
-    }
+      body {
+        padding: 0;
+        margin: 0;
+        align-items: center;
+      }
+      nav {
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        padding: 40px;
+        font-size: 30px;
+        height: 10vh;
+      }
 
-    .navLi{
-      padding: 0 5px;
-    
-    }
-    
-    h3 {
-    text-align: center;
-      font-size: 40px;
-    }
-   
-    input {
-      padding: 20px;
-      margin: 10px;
-      width: 60vw;
-      height: 4vh;
-      border: none;
-      border-bottom: 1px solid black;
-       
-    }
-    a{
-      padding: 0 10px;
-      color: white;
-      text-decoration: none;
-    }
+      .navLi {
+        padding: 0 5px;
+      }
 
-    .search{
+      h3 {
+        text-align: center;
+        font-size: 40px;
+      }
+
+      input {
+        padding: 20px;
+        margin: 10px;
+        width: 60vw;
+        height: 4vh;
+        border: none;
+        border-bottom: 1px solid black;
+      }
+      a {
+        padding: 0 10px;
+        color: white;
+        text-decoration: none;
+      }
+
+      .search {
         padding-top: 50px;
-    }
-    .searchBar {
-            width: 85%;
-            height: 4vh;
-            font-size: 15px;
-            padding: 10px;
-            margin: 20px;
-            background-color: rgb(255, 255, 255);
-            border: none;
-            border-bottom: 1px solid black;
-    }
-    .searchButton{
-    width: 9vw;
-    background-color: rgb(28, 198, 255);
-    border: none;
-    height: 7vh;
-}  
-.container{
-            background-color: rgba(255, 255, 255, 0.986);
-            display: flex;
-                border: 0.1px solid grey;
-                border-radius: 20px;
-            flex-direction: column;
-            width: 40vw;
-            height: 40vh;
-            padding: 20px;
-            margin: 20px;
-            color: black;
-          
-        } 
-        .containerDiv{
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-        }
-        p{
-                padding: 0 15px;
-        }
+      }
+      .searchBar {
+        width: 85%;
+        height: 4vh;
+        font-size: 15px;
+        padding: 10px;
+        margin: 20px;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-bottom: 1px solid black;
+      }
+      .searchButton {
+        width: 9vw;
+        background-color: rgb(28, 198, 255);
+        border: none;
+        height: 7vh;
+      }
+      .container {
+        background-color: rgba(255, 255, 255, 0.986);
+        display: flex;
+        border: 0.1px solid grey;
+        border-radius: 20px;
+        flex-direction: column;
+        width: 25%;
+        height: 57vh;
+        padding: 20px;
+        margin: 20px;
+        color: black;
+      }
+      .containerImage {
+        width: 22vw;
+        height: 30vh;
+      }
+      .containerDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      p {
+        font-size: 22px;
+        padding: 0 15px;
+      }
+    </style>
+  </head>
 
-        </style>
-</head> 
-  
-<body> 
+  <body>
     <nav>
-        <a href="/">Da-Manager</a>
-        
-          <a href="./login">Admin</a>
-      </nav>
-      
+      <a href="/">Da-Manager</a>
 
-<div class="client">
-    
-    <div class="search">
-        <input class="searchBar" type="text" placeholder="Search For Products">
+      <a href="./login">Admin</a>
+    </nav>
+
+    <div class="client">
+      <div class="search">
+        <input
+          class="searchBar"
+          type="text"
+          placeholder="Search For Products"
+        />
         <button class="searchButton">Search</button>
-    </div>
-    <div  >
-    
-        <h3>Products Found</h3>
+      </div>
+      <div>
+        <h3>Products </h3>
         <div class="containerDiv">
           <% users.forEach(function(user) { %>
-                  <div class="container">
-          
-                          <p > <%=user.user_name%> </p>
-                          <p> <%=user.user_product%>  </p>
-                          <p> <%=user.user_price%> </p>
-                          <!-- <div>
-                              {userImmage}
-                          </div> -->
-                      </div>
-              <% }) %>
+          <div class="container">
+            <div>
+              <img src="imgUrlHere" />
+              <img class="containerImage" src="<%=user.photo%>" />
+            </div>
+            <p><%=user.user_name%></p>
+            <p><%=user.user_product%></p>
+            <p><%=user.user_price%></p>
+          </div>
+          <% }) %>
+        </div>
       </div>
-       
-    </div> 
-</div>
-
-</body> 
-  
+    </div>
+  </body>
 </html>
