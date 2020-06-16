@@ -4,7 +4,7 @@ const directData = new mongoose.Schema({
   user_name: String,
   user_product: String,
   user_price: String,
-  // user_images: {
+  // photo: {
   //   path: {
   //     type: String,
   //     required: true,

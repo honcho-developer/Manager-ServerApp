@@ -22,10 +22,6 @@ body{
       font-size: 30px;
       height: 10vh;
     }
-    a{
-      color: white;
-      text-decoration: none;
-    }
    
 
     .mainDiv {
@@ -33,9 +29,7 @@ body{
             flex-direction: column;
             width: 100%;
     }
-    a {
-            text-decoration: none;
-    }
+    
     .searchBar {
             width: 70%;
             height: 7vh;
@@ -46,19 +40,19 @@ body{
 
    
     .searchBar {
-            width: 70%;
+            width: 85%;
             height: 4vh;
             font-size: 15px;
             padding: 10px;
             margin: 20px;
-            background-color: lightblue;
+            background-color: rgb(255, 255, 255);
             border: none;
+            border-bottom: 1px solid black;
     }
     .searchButton{
     width: 9vw;
-    background-color: lightblue;
+    background-color: rgb(28, 198, 255);
     border: none;
-
     height: 7vh;
 }  
     h2 {        
@@ -67,26 +61,36 @@ body{
             
     }
     .container{
-            background-color: rgba(216, 218, 218, 0.651);
-            width: 40vh;
+            background-color: rgba(255, 255, 255, 0.986);
+            display: flex;
+                border: 0.1px solid grey;
+                border-radius: 20px;
+            flex-direction: column;
+            width: 40vw;
             height: 40vh;
             padding: 20px;
             margin: 20px;
-            color: white;
-            -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
-      box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
-        inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+            color: black;
+          
         } 
+        .containerDiv{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                
+        }
+        
+        a{
+                text-decoration: none;
+                padding: 0 15px;
+                font-size: 30px;
+                color: white;
+        }
 </style>
 <nav>
         <a href="/"> Home</a>
         <div class="navLi">
-          <a href="/add_direct">Forms</a>
+          <a href="/add_direct">Post</a>
           <a href="/display">Records</a>
         </div>
       </nav>
@@ -94,26 +98,34 @@ body{
       <br>
       <br>
       <div class="search">
-        <input class="searchBar" type="text" placeholder="Search For Products">
-        <button class="searchButton">Search</button>
+       
+        <input class="searchBar" value="" type="text" placeholder="Search For Products">
+        <button submit="./filter" class="searchButton">Search</button>
     </div>
 <br>
 <br>
 <br>
 <div class="mainDiv" >
-
+        
     <h2>Records Found</h2>
-
-    <div class="container">
-        <p>{{user_name}}</p>
-        <p>{{user_product}}</p>
-        <li> {{user_price}}</li>
-        <div>
-            {userImmage}
-        </div>
-        <a href='/edit'>Edit</a> |
-         <a href='delete/{{_id}}'>Delete</a>
+    <div class="containerDiv">
+        <% users.forEach(function(user) { %>
+                <div class="container">
+        
+                        <p > <%=user.user_name%> </p>
+                        <p> <%=user.user_product%>  </p>
+                        <p> <%=user.user_price%> </p>
+                        <!-- <div>
+                            {userImmage}
+                        </div> -->
+                    <div>
+                        <a class="aDisplay" href='/edit/<%= user._id %>' style="color: orange;" >Edit</a> 
+                        <a class="aDisplay" href="deleteOne/<%= user._id %>" style="color: red;" >Delete</a>
+                    </div>
+                    </div>
+            <% }) %>
     </div>
+ 
 
    
 </div>

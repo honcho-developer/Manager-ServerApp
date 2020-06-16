@@ -40,6 +40,7 @@
       width: 30vw;
     }
     a{
+        padding: 0 10px;
       color: white;
       text-decoration: none;
     }
@@ -78,14 +79,14 @@
     <nav>
         <a href="/"> Home</a>
         <div class="navLi">
-          <a href="/add_direct">Forms</a>
+          <a href="/add_direct">Post</a>
           <a href="/display">Records</a>
         </div>
       </nav>
 <div class="mainDiv">
     
     <form method="post" action="/add_direct" >
-        <h2>Fill Post</h2>
+        <h2>Add Post</h2>
         <input type="text" placeholder="Enter Name" name="user_name" >
         <br>
         <input type="text" placeholder="Product Description" name="user_product" >
@@ -94,7 +95,7 @@
 
         <input type="number" placeholder="Enter Price" name="user_price" >
         <br>
-        <input class="photoInput" type="file"  />
+        <input class="photoInput" type="file"  name="photo" enctype="multipart/form-data"   />
 
         <br>
         <button class="addButton"  submit="/add_direct" >Post </button>

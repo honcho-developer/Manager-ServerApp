@@ -2,12 +2,13 @@ const express = require("express");
 const app = express();
 const flash = require("req-flash");
 const path = require("path");
-const multer = require('multer')
+const multer = require("multer");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Direct = require("./models/directSchema");
 const User = require("./models/adminSchema");
+const { renderFile } = require("ejs");
 const db = process.env.MONGODB_URL;
 
 // Set EJS as templating engine
@@ -35,34 +36,34 @@ mongoose
   });
 
 const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, 'uploads/')
-
-    },
-    filename: function(req, file, cb){
-        cb(null, file.originalname)
-    }
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
 });
 
 const upload = multer({
-    storage: storage
-})
+  storage: storage,
+});
 app.post("/add", (req, res) => {
-    upload(req, res, (err) => {
-     if(err) {
-       res.status(400).send("Something went wrong!");
-     }
-     res.send(req.file);
-   });
- });
-app.get("/", (req, res) => {
-  // The render method takes the name of the HTML
-  // page to be rendered as input.
-  // This page should be in views folder in
-  // the root directory.
-  // We can pass multiple properties and values
-  // as an object, here we are passing the only name
-  res.render("clientView");
+  upload(req, res, (err) => {
+    if (err) {
+      res.status(400).send("Something went wrong!");
+    }
+    res.send(req.file);
+  });
+});
+app.get("/",  function (req, res) {
+  Direct.find(function (err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("clientView", { users: users }, );
+      console.log(users);
+    }
+  });
 });
 
 // require('./utils/utils')
@@ -83,7 +84,6 @@ app.post("/login", async (req, res) => {
   User.findOne({ username, password }, (err, users) => {
     if (users === req.body) {
       res.send(users);
-      
     } else {
       res.render("home", { users: users });
       console.error("User not found");
@@ -100,35 +100,43 @@ app.get("/add_direct", function (req, res) {
     }
   });
 });
-app.post("/add_direct", function (req, res){
-  
-    console.log(req.body);
+app.post("/add_direct", function (req, res) {
+  console.log(req.body);
 
-    const mybodydata = {
-        user_name: req.body.user_name,
-        user_product: req.body.user_product,
-        user_price: req.body.user_price,
-        
+  const mybodydata = {
+    user_name: req.body.user_name,
+    user_product: req.body.user_product,
+    user_price: req.body.user_price,
+  };
+  const direct = Direct(mybodydata);
+  //var data = UsersModel(req.body);
+  direct.save(function (err) {
+    if (err) {
+      res.render("home", { message: "User registered not successfully!" });
+    } else {
+      res.render("home", { message: "User registered successfully!" });
     }
-    const direct = Direct(mybodydata);
-    //var data = UsersModel(req.body);
-    direct.save(function(err) {
-        if (err) {
-
-            res.render('home', { message: 'User registered not successfully!' });
-        } else {
-
-            res.render('home', { message: 'User registered successfully!' });
-        }
-    })
+  });
 });
+
+//FILTER FUNCTION
+
+// app.get("/filter", (req, res) => {
+//   process.env.MONGODB_URL.collection("directData")
+//     .find()
+//     .toArray((err, result) => {
+//       if (err) return console.log(err);
+//       // renders index.ejs
+//       res.render("index.ejs", { mydb: result });
+//     });
+// });
 
 app.get("/display", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
       console.log(err);
     } else {
-      res.render("display", { users: users });
+      res.render("display", { users: users }, );
       console.log(users);
     }
   });
@@ -144,27 +152,28 @@ app.delete("/deleteAll", (req, res) => {
   });
 });
 
-app.delete("/deleteOne/:id", (req, res) => {
+app.get("/deleteOne/:id", (req, res) => {
   console.log(req.params);
   Direct.findByIdAndRemove(req.params.id, (err, removed) => {
     if (err) {
       return err;
     } else {
       res.send(removed);
+      renderFile('home')
     }
   });
 });
 
-app.get('/edit/:id', function(req, res) {
+app.get("/edit/:id", function (req, res) {
   console.log(req.params.id);
-  UsersModel.findById(req.params.id, function(err, user) {
-      if (err) {
-          console.log(err);
-      } else {
-          console.log(user);
+  Direct.findById(req.params.id, function (err, user) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(user);
 
-          res.render('edit-form', { userDetail: user });
-      }
+      res.render("edit", { userDetail: user });
+    }
   });
 });
 app.post("/edit/:id", (req, res) => {
@@ -175,6 +184,7 @@ app.post("/edit/:id", (req, res) => {
     } else {
       console.log(updated);
       res.send(updated);
+      
     }
   });
 });
