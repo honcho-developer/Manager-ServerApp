@@ -3,6 +3,7 @@
     body {
         padding: 0;
         margin: 0;
+        cursor: pointer;
     }
 
     form {
@@ -41,8 +42,10 @@
                 height: 8vh;
                 margin: 20px;
                 padding: 10px;
-                background-color: black;
+                border: none;
+                background-color: rgb(40, 97, 255);
                 color: white;
+                cursor: pointer;
             }
             h2{
                 border-bottom: 3px solid black;
@@ -50,7 +53,7 @@
 </style>
 
 <div>
-    <form action="/edit" method="post" >
+    <form  method="post" >
         <h2>Edit Post</h2>
         <input type="text" placeholder="Enter Name" name="user_name"  value="<%=userDetail.user_name%>" required />
         <br>
@@ -61,8 +64,10 @@
         <input type="number" placeholder="Enter Price" name="user_price" value="<%=userDetail.user_price%>" required />
         <br>
         
-        <!-- <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.photo%>"  /> -->
+        <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.upload%>" required  />
         <br>
+        
+        
         <button class="addButton" value="action">Post </button>
 
     </form>

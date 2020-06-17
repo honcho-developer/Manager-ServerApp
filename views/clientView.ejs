@@ -7,6 +7,7 @@
         padding: 0;
         margin: 0;
         align-items: center;
+        cursor: pointer;
       }
       nav {
         background-color: black;
@@ -44,7 +45,7 @@
         padding-top: 50px;
       }
       .searchBar {
-        width: 85%;
+        width: 45%;
         height: 4vh;
         font-size: 15px;
         padding: 10px;
@@ -58,6 +59,7 @@
         background-color: rgb(28, 198, 255);
         border: none;
         height: 7vh;
+        width: 7w;
       }
       .container {
         background-color: rgba(255, 255, 255, 0.986);
@@ -72,7 +74,7 @@
         color: black;
       }
       .containerImage {
-        width: 22vw;
+        width: 25vw;
         height: 30vh;
       }
       .containerDiv {
@@ -103,7 +105,8 @@
         <button class="searchButton">Search</button>
       </div>
       <div>
-        <h3>Products</h3>
+        <h3> Products</h3>
+        <hr style="border: 10px solid green;">
         <div class="containerDiv">
           <% users.forEach(function(user) { %>
           <div class="container">

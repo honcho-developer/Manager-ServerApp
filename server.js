@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const session = require('express-session')
-const flash = require("connect-flash");
+const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const path = require("path");
 const multer = require("multer");
@@ -25,20 +25,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
+
+app.use(cookieParser("secret_passcode"));
 app.use(session({
-  secret: 'djhxcvxfgshajfgjhgsjhfgsakjeauytsdfy',
+  secret: "secret_passcode",
+  cookie: {
+    maxAge: 4000000
+  },
   resave: false,
-  saveUninitialized: true
-  }));
-
-
-// Global variables
+  saveUninitialized: false
+}));
 app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 
 
-
- 
 
 
 mongoose
@@ -165,15 +169,9 @@ app.post("/add_direct", upload.single("photo"), function (req, res) {
   //var data = UsersModel(req.body);
   direct.save(function (err) {
     if (err) {
-     //if error
-    //  req.flash("msg","Error Occured");
-    //  res.locals.messages = req.flash();
-     res.render('home');
+      res.render("home", { message: "User registered not successfully!" });
     } else {
-     //on success
-    //  req.flash("msg", "Data updated successfully");
-    //  res.locals.messages = req.flash();
-     res.render('home');
+      res.render("home", { message: "User registered successfully!" });
     }
   });
 });
@@ -205,12 +203,14 @@ app.get("/display", function (req, res) {
   });
 });
 
-app.delete("/deleteAll", (req, res) => {
-  Direct.deleteMany({}, (err, removed) => {
-    if (err) {
-      return err;
-    } else {
+app.get("/deleteAll", (req, res) => {
+  Direct.deleteMany((req.params), ( removed) => {
+    if (removed) {
+      
       res.send(removed);
+      
+    } else {
+      res.render('home');
     }
   });
 });

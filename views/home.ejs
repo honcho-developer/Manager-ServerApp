@@ -7,6 +7,7 @@
             padding: 0;
             margin: 0;
             align-items: center;
+            cursor: pointer;
         }
         nav {
       background-color: black;
@@ -19,10 +20,6 @@
     }
 
 
-    .navLi{
-      padding: 0 5px;
-    
-    }
 
     h4 {
       align-self: center;
@@ -70,6 +67,7 @@
             }
             h2{
                 border-bottom: 3px solid black;
+                font-size: 50px;
             }
             
         </style>
@@ -80,32 +78,31 @@
     <nav>
         <a href="/"> Home</a>
         <div class="navLi">
-          <a href="/add_direct">Product</a>
-          <a href="/display">Records</a>
+          <a href="/add_direct">New Product</a>
+          <a href="/display">Products</a>
         </div>
       </nav>
       
 <div class="mainDiv">
+   
+  <form method="post" enctype="multipart/form-data" action="/add_direct"  >
+    <h2>Add New Product</h2>
+    <input type="text" placeholder="Product Name" name="user_name" required >
+    <br>
+    <input type="text" placeholder="Product Description" name="user_product" required >
+
+    <br>
+
+    <input type="number" placeholder="Enter Price" name="user_price" required >
+    <br>
+    <input class="photoInput" type="file"  name="photo" required   />
+
+    <br>
+    <button class="addButton"  submit="/add_direct" >Post </button>
+</form>
+ 
+  </div>
   
-    <form method="post" enctype="multipart/form-data" action="/add_direct" >
-        <h2>Add New Product</h2>
-        <!-- <% if (locals.messages) { %>
-          <% } %> -->
-        
-        <input type="text" placeholder="Product Name" name="user_name" >
-        <br>
-        <input type="text" placeholder="Product Description" name="user_product" >
-
-        <br>
-
-        <input type="number" placeholder="Enter Price" name="user_price" >
-        <br>
-        <input class="photoInput" type="file"  name="photo"    />
-
-        <br>
-        <button class="addButton"  submit="/add_direct" >Post </button>
-      
-    </form>
    
 </div>
 

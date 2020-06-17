@@ -10,6 +10,7 @@
       body {
         padding: 0;
         margin: 0;
+        align-items: center;
       }
 
       nav {
@@ -37,7 +38,7 @@
       }
 
       .searchBar {
-        width: 85%;
+        width: 45%;
         height: 4vh;
         font-size: 15px;
         padding: 10px;
@@ -51,6 +52,7 @@
         background-color: rgb(28, 198, 255);
         border: none;
         height: 7vh;
+        width: 7vw;
       }
       h2 {
         text-align: center;
@@ -69,7 +71,7 @@
         color: black;
       }
       .containerImage {
-        width: 22vw;
+        width: 25vw;
         height: 30vh;
       }
       .containerDiv {
@@ -86,17 +88,24 @@
         font-size: 30px;
         color: white;
       }
+      h2{
+                border-bottom: 17px solid green;
+                padding: 10px 0;
+                font-size: 50px;
+               
+            }
     </style>
     <nav>
       <a href="/"> Home</a>
       <div class="navLi">
-        <a href="/add_direct">Product</a>
-        <a href="/display">Records</a>
+        <a href="/add_direct">New Product</a>
+        <a href="/display">Products</a>
       </div>
     </nav>
     <br />
     <br />
     <br />
+    
     <div class="search">
       <input
         class="searchBar"
@@ -112,6 +121,7 @@
     <br />
     <br />
     <div class="mainDiv">
+      <h2>Products</h2>
       <div class="containerDiv">
         <% users.forEach(function(user) { %>
         <div class="container">
@@ -141,7 +151,27 @@
           </div>
         </div>
         <% }) %>
+        
       </div>
+      
     </div>
+    <br>
+    <br>
+    <br>
+    <hr style="border: 10px solid green;">
+    
+       <a style="width:8vw;
+       height: 5vh; 
+        float: right;
+        color: white; 
+        text-decoration: none;
+        background-color: red;
+        padding: 15px;
+        margin: 15px;
+        border: 2px solid black;
+        border-radius: 5px;
+        font-weight: bolder;
+         font-size: x-large;
+         cursor: pointer;" href="deleteAll/<%=users.userDetail%>">Delete All</a>
   </body>
 </html>
