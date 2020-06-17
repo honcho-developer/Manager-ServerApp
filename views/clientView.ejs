@@ -80,8 +80,7 @@
         flex-wrap: wrap;
         justify-content: center;
       }
-      p {
-        font-size: 22px;
+      .pText{
         padding: 0 15px;
       }
     </style>
@@ -104,16 +103,18 @@
         <button class="searchButton">Search</button>
       </div>
       <div>
-        <h3>Products </h3>
+        <h3>Products</h3>
         <div class="containerDiv">
           <% users.forEach(function(user) { %>
           <div class="container">
             <div>
               <img class="containerImage" src="<%=user.photo%>" />
             </div>
-            <p><%=user.user_name%></p>
-            <p><%=user.user_product%></p>
-            <p><%=user.user_price%></p>
+            <div class="pText">
+              <p style="font-size: 35px; font-weight: bolder; color: darkgreen;"><%=user.user_name%></p>
+              <p style="font-size: 20px;"><%=user.user_product%></p>
+              <p style="font-size: 20px;"><%=user.user_price%></p>
+            </div>
           </div>
           <% }) %>
         </div>

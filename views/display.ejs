@@ -63,7 +63,7 @@
         border-radius: 20px;
         flex-direction: column;
         width: 25%;
-        height: 57vh;
+        height: 59vh;
         padding: 20px;
         margin: 20px;
         color: black;
@@ -77,10 +77,8 @@
         flex-wrap: wrap;
         justify-content: center;
       }
-      p {
-        
+      .pText{
         padding: 0 15px;
-        font-size: 20px;
       }
       a {
         text-decoration: none;
@@ -121,9 +119,9 @@
             <img class="containerImage" src="<%=user.photo%>" />
           </div>
           <div class="pText">
-            <p  ><%=user.user_name%></p>
-            <p><%=user.user_product%></p>
-            <p><%=user.user_price%></p>
+            <p style="font-size: 30px; font-weight: bolder; color: darkgreen;"><%=user.user_name%></p>
+            <p style="font-size: 17px;""><%=user.user_product%></p>
+            <p style="font-size: 17px;""><%=user.user_price%></p>
           </div>
          
 
