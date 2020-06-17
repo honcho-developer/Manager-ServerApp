@@ -50,19 +50,18 @@
 </style>
 
 <div>
-    
-    <form method="post">
+    <form action="/edit" method="post" >
         <h2>Edit Post</h2>
-        <input type="text" placeholder="Enter Name" name="user_name"  value="<%=userDetail.user_name%>" />
+        <input type="text" placeholder="Enter Name" name="user_name"  value="<%=userDetail.user_name%>" required />
         <br>
-        <input type="text" placeholder="Product Description" name="user_product" value="<%=userDetail.user_product%>" />
+        <input type="text" placeholder="Product Description" name="user_product" value="<%=userDetail.user_product%>" required/>
 
         <br>
 
-        <input type="number" placeholder="Enter Price" name="user_price" value="<%=userDetail.user_price%>" />
+        <input type="number" placeholder="Enter Price" name="user_price" value="<%=userDetail.user_price%>" required />
         <br>
         
-
+        <!-- <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.photo%>"  /> -->
         <br>
         <button class="addButton" value="action">Post </button>
 

@@ -76,17 +76,22 @@
 </head> 
   
 <body> 
+  
     <nav>
         <a href="/"> Home</a>
         <div class="navLi">
-          <a href="/add_direct">Post</a>
+          <a href="/add_direct">Product</a>
           <a href="/display">Records</a>
         </div>
       </nav>
+      
 <div class="mainDiv">
-    
+  
     <form method="post" enctype="multipart/form-data" action="/add_direct" >
-        <h2>Add New Post</h2>
+        <h2>Add New Product</h2>
+        <!-- <% if (locals.messages) { %>
+          <% } %> -->
+        
         <input type="text" placeholder="Product Name" name="user_name" >
         <br>
         <input type="text" placeholder="Product Description" name="user_product" >
@@ -99,7 +104,9 @@
 
         <br>
         <button class="addButton"  submit="/add_direct" >Post </button>
+      
     </form>
+   
 </div>
 
 </body> 

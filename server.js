@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
-const flash = require("req-flash");
+const session = require('express-session')
+const flash = require("connect-flash");
+const cookieParser = require('cookie-parser');
 const path = require("path");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
@@ -12,6 +14,8 @@ const User = require("./models/adminSchema");
 const { renderFile } = require("ejs");
 const db = process.env.MONGODB_URL;
 
+
+
 // Set EJS as templating engine
 app.set("view engine", "ejs");
 app.set("views",__dirname + "/views");
@@ -19,6 +23,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static("uploads"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
+
+app.use(session({
+  secret: 'djhxcvxfgshajfgjhgsjhfgsakjeauytsdfy',
+  resave: false,
+  saveUninitialized: true
+  }));
+
+
+// Global variables
+app.use(flash());
+
+
+
+
+ 
+
 
 mongoose
   .connect(
@@ -133,7 +154,6 @@ app.get("/add_direct", function (req, res) {
   });
 });
 app.post("/add_direct", upload.single("photo"), function (req, res) {
-  console.log(req.file);
 
   const mybodydata = {
     user_name: req.body.user_name,
@@ -145,9 +165,15 @@ app.post("/add_direct", upload.single("photo"), function (req, res) {
   //var data = UsersModel(req.body);
   direct.save(function (err) {
     if (err) {
-      res.render("home", { message: "User registered not successfully!" });
+     //if error
+    //  req.flash("msg","Error Occured");
+    //  res.locals.messages = req.flash();
+     res.render('home');
     } else {
-      res.render("home", { message: "User registered successfully!" });
+     //on success
+    //  req.flash("msg", "Data updated successfully");
+    //  res.locals.messages = req.flash();
+     res.render('home');
     }
   });
 });
@@ -213,7 +239,7 @@ app.get("/edit/:id", function (req, res) {
     }
   });
 });
-app.post('/edit/:id', function(req, res) {
+app.post('/edit/:id', upload.single("photo"), function(req, res) {
   Direct.findByIdAndUpdate(req.params.id, req.body, function(err) {
       if (err) {
           
