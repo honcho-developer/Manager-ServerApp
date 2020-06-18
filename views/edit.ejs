@@ -43,7 +43,7 @@
                 margin: 20px;
                 padding: 10px;
                 border: none;
-                background-color: rgb(40, 97, 255);
+                background-color: black;
                 color: white;
                 cursor: pointer;
             }
@@ -64,11 +64,11 @@
         <input type="number" placeholder="Enter Price" name="user_price" value="<%=userDetail.user_price%>" required />
         <br>
         
-        <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.upload%>" required  />
+        <!-- <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.photo%>" required  /> -->
         <br>
         
         
-        <button class="addButton" value="action">Post </button>
+        <button class="addButton" submit="edit/:id">Post </button>
 
     </form>
 

@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const session = require('express-session')
-const flash = require('connect-flash');
+const flash = require('req-flash');
 const cookieParser = require('cookie-parser');
+const swat = require('sweetalert')
 const path = require("path");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
@@ -21,23 +22,25 @@ app.set("view engine", "ejs");
 app.set("views",__dirname + "/views");
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static("uploads"));
+app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
 
-app.use(cookieParser("secret_passcode"));
 app.use(session({
-  secret: "secret_passcode",
-  cookie: {
-    maxAge: 4000000
-  },
+  secret: 'djhxcvxfgshajfgjhgsjhfgsakjeauytsdfy',
   resave: false,
-  saveUninitialized: false
-}));
-app.use(flash());
-app.use((req, res, next) => {
-  res.locals.flashMessages = req.flash();
+  saveUninitialized: true
+  }));
+
+  app.use(flash());
+ 
+ // Global variables
+app.use(function(req, res, next){
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next();
 });
 
@@ -177,23 +180,34 @@ app.post("/add_direct", upload.single("photo"), function (req, res) {
 });
 
 //FILTER FUNCTION
-// const search = (e) => {
-//   e.target.name
-//   console.log(search)
-// }
 
 // app.get('/filter', (req, res) => {
 
-//   const {db} = req.baseUrl
+//   const {db} = req.body
 //   db.collection('mydb').find().toArray((err, result) => {
 //     if (err) return console.log(err)
-//     // renders index.ejs
-//     res.render('index.ejs', {mydb: result})
+//     
+//     res.render('dispay', {mydb: result})
 //   })
 // })
 
 app.get("/display", function (req, res) {
-  Direct.find(function (err, users) {
+  if(req.query.search){
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    Direct.find({user_name: regex}, function (err, users) {
+      if (err) {
+        console.log(err);
+      } else {
+        var noMatch;
+        if(Direct.length < 1){
+           noMatch = "No products found, please try again"
+        }
+        res.render("display", { users: users, noMatch: noMatch });
+        console.log(users);
+      }
+    });
+  }else{
+    Direct.find(function (err, users) {
     if (err) {
       console.log(err);
     } else {
@@ -201,6 +215,8 @@ app.get("/display", function (req, res) {
       console.log(users);
     }
   });
+  }
+  
 });
 
 app.get("/deleteAll", (req, res) => {
@@ -239,7 +255,7 @@ app.get("/edit/:id", function (req, res) {
     }
   });
 });
-app.post('/edit/:id', upload.single("photo"), function(req, res) {
+app.post('/edit/:id' ,upload.single("photo"), function(req, res) {
   Direct.findByIdAndUpdate(req.params.id, req.body, function(err) {
       if (err) {
           
@@ -250,6 +266,27 @@ app.post('/edit/:id', upload.single("photo"), function(req, res) {
       }
   });
 });
+
+// function areYouSureDelete() {
+//   swal({
+//     title: "Are you sure you wish to delete this record?",
+//     type: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: '#DD6B55',
+//     confirmButtonText: 'Yes, delete it!',
+//     closeOnConfirm: false,
+// }.then((value) => {
+//   if(value){
+//            //ajax call or other action to delete the blog
+//         swal("Deleted!", "Your imaginary file has been deleted!", "success");
+//      }else{
+//        //write what you want to do
+//       }
+//  })); };
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

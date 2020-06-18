@@ -93,15 +93,25 @@
     </nav>
     <h3> Products</h3>
     <div class="client">
-      <div class="search">
+      
+      <form action="/display" method="GET">
+        <div class="search">
         <input
           class="searchBar"
+          name="search"
           type="text"
           placeholder="Search For Products"
         />
-        <button class="searchButton">Search</button>
+        <input
+          class="searchButton "
+          value="search"
+          type="submit"
+        />
+        <!-- <button onclick="search()" submit="./filter" class="searchButton">
+          Search
+        </button> -->
       </div>
-      <div>
+      </form>
        
       
         <div class="containerDiv">

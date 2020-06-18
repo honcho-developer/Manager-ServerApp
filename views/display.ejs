@@ -100,21 +100,32 @@
       </div>
     </nav>
     <h2>Products</h2>
-    <div class="search">
+    <form action="/display" method="GET">
+      <div class="search">
       <input
         class="searchBar"
         name="search"
         type="text"
         placeholder="Search For Products"
       />
-      <button onclick="search()" submit="./filter" class="searchButton">
+      <input
+        class="searchButton "
+        value="search"
+        type="submit"
+      />
+      <!-- <button onclick="search()" submit="./filter" class="searchButton">
         Search
-      </button>
+      </button> -->
     </div>
+    </form>
     <br />
     <br />
     <br />
+    
     <div class="mainDiv">
+      <div>
+        
+      </div>
       <div class="containerDiv">
         <% users.forEach(function(user) { %>
         <div class="container">
