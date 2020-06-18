@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
     <style type="text/css" media="screen">
       body {
         padding: 0;
@@ -27,30 +22,57 @@
         flex-direction: column;
         width: 100%;
       }
-
-      .search{
-        padding: 0 20px;
+      .headerSearch{
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        padding: 10px;
       }
-      .searchBar {
-        width: 31%;
-        height: 4vh;
+      .headLink{
+        display: flex;
+       
+      }
+      .btnLink{
+        width: 10vw;
+        margin: 30px  5px ;
+        background-color: transparent;
+        border: 1px solid black;
+        height: 5vh;
+      }
+      .btnLinkA{
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .search {
+        width: 50%;
+        display: flex;
+        padding: 10px 5px;
+      }
+      
+      .searchButton {
+        width: 10vw;
+        padding: 5px 5px;
+        font-size: 20px;
+        margin: 20px 0;
+        background-color: rgb(199, 206, 209);
+        border: none;
+        height: 5vh;
+        
+      }
+      .searchBar{
+        width: 30vw;
+        height: 5vh;
         font-size: 15px;
         padding: 10px;
         margin: 20px;
         background-color: rgb(255, 255, 255);
-        border: none;
-        border-bottom: 1px solid black;
-      }
-      .searchButton {
-        width: 9vw;
-        background-color: rgb(199, 206, 209);
-        border: none;
-        height: 7vh;
-        width: 7vw;
+    
+        border: 1px solid black;
       }
       h2 {
-        text-align: center;
-        font-size: 40px;
+        padding-left: 40px;
+        font-size: 35px;
       }
       .container {
         background-color: rgba(255, 255, 255, 0.986);
@@ -78,112 +100,114 @@
       a {
         text-decoration: none;
         padding: 0 15px;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
       }
-      h2{
-                padding: 10px 0;
-                font-size: 50px;
-               
-            }
-    </style>
-  </head>
-  
-  <body>
-  
-    
-    <nav>
-      <a href="/"> Home</a>
-      <div class="navLi">
-        <a href="/add_direct">New Product</a>
-        <a href="/display">Products</a>
-      </div>
-    </nav>
-    <h2>Products</h2>
-    <form action="/display" method="GET">
-      <div class="search">
-      <input
-        class="searchBar"
-        name="search"
-        type="text"
-        placeholder="Search For Products"
-      />
-      <input
-        class="searchButton "
-        value="search"
-        type="submit"
-      />
-      <!-- <button onclick="search()" submit="./filter" class="searchButton">
-        Search
-      </button> -->
-    </div>
-    </form>
-    <br />
-    <br />
-    <br />
-    
-    <div class="mainDiv">
-      <div>
-        
-      </div>
-      <div class="containerDiv">
-        <% users.forEach(function(user) { %>
-        <div class="container">
-          <div>
-            <img class="containerImage" src="<%=user.photo%>" />
-          </div>
-          <div class="pText">
-            <p style="font-size: 22px; font-weight: bold; color: black;"><%=user.user_name%></p>
-            <p style="font-size: 17px;""><%=user.user_product%></p>
-            <p style="font-size: 17px;""> <span>$ <%=user.user_price%></span></p>
-          </div>
-         
-
-          <div style="padding: 15px 5px; display: flex; justify-content: space-between;">
-            
-            <a
-            
-              class="aDisplay"
-              href="deleteOne/<%= user._id %>"
-              style="color: black; 
-              padding: 5px 10px; font-weight: bold;"
-              >Delete</a
-            >
-            <a
-              class="aDisplay"
-              href="/edit/<%= user._id %>"
-              style="background-color: black; 
-              border: 1px solid black;
-              color: white;
-              margin: 0 10px;
-              padding: 5px 25px; 
-              font-weight: bold;"
-              >Edit</a
-            >
-          </div>
-        </div>
-        <% }) %>
-        
-      </div>
       
-    </div>
-    <br>
-    <br>
-    <br>
- 
-    <hr>
-       <a style="width:8vw;
-       height: 5vh; 
-        float: right;
-        color: black; 
-        text-decoration: none;
-        background-color: transparent;
-        padding: 10px 20px;
-        margin: 10px 85px;
-        border: 2px solid black;
-        border-radius: 5px;
-        font-weight: bolder;
-         font-size: x-large;
-         cursor: pointer;" href="deleteAll/<%=users.userDetail%>">Delete All</a>
-  </body>
-</html>
+    </style>
+
+    
+    <body>
+      <nav>
+        <a href="/"> Home</a>
+          <a href="/display">Products</a>
+      </nav>
+      <div class="headerSearch">
+        <div class="headLink">
+          <h2>Products</h2>
+          <button class="btnLink">  <a class="btnLinkA" href="/add_direct">Add New</a></button>
+        </div>
+      <form class="search" action="/display" method="GET">
+        
+        <input
+          class="searchBar"
+          name="search"
+          type="text"
+          placeholder="Search For Products ......."
+        />
+      
+        <input
+          class="searchButton"
+          value="Search"
+          type="submit"
+        />
+       
+      </form>
+      
+     
+      </div>
+      <br />
+      <br />
+      <br />
+     
+      <div class="mainDiv">
+     
+        <div class="containerDiv">
+          <!-- <div>
+            <% if( locals.noMatch === locals.length) { %>
+              <h3><% locals.noMatch %></h3>
+          <% } %>
+           </div> -->
+          <% users.forEach(function(user) { %>
+          <div class="container">
+            <div>
+              <img class="containerImage" src="<%=user.photo%>" />
+            </div>
+            <div class="pText">
+              <p style="font-size: 22px; font-weight: bold; color: black;"><%=user.user_name%></p>
+              <p style="font-size: 17px;""><%=user.user_product%></p>
+              <p style="font-size: 17px;""> <span>$ <%=user.user_price%></span></p>
+            </div>
+           
+  
+            <div style="padding: 15px 5px; display: flex; justify-content: space-between;">
+              
+              <a
+              
+                class="aDisplay"
+                href="deleteOne/<%= user._id %>"
+                style="color: black; 
+                margin-left: 10px;
+                padding: 5px 15px; font-weight: bold;
+                border: 1px solid black;
+                "
+                
+                >Delete</a
+              >
+              <a
+                class="aDisplay"
+                href="/edit/<%= user._id %>"
+                style="background-color: black; 
+                border: 1px solid black;
+                color: white;
+                margin: 0 10px;
+                padding: 5px 25px; 
+                font-weight: bold;"
+                >Edit</a
+              >
+            </div>
+          </div>
+          <% }) %>
+          
+        </div>
+        
+      </div>
+      <br>
+      <br>
+      <br>
+   
+      <hr>
+         <a style="width:8vw;
+         height: 5vh; 
+          float: right;
+          color: black; 
+          text-decoration: none;
+          background-color: transparent;
+          padding: 10px 20px;
+          margin: 10px 85px;
+          border: 2px solid black;
+          border-radius: 5px;
+          font-weight: bolder;
+           font-size: x-large;
+           cursor: pointer;" href="deleteAll/<%=users.userDetail%>">Delete All</a>
+    </body>

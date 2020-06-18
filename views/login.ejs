@@ -1,93 +1,75 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Home Page</title> 
-    <style type="text/css" media="screen">
-        body{
-            padding: 0;
-            margin: 0;
-            cursor: pointer;
-            
-        }
-        nav {
-        background-color: black;
-        display: flex;
-        justify-content: space-between;
-        padding: 40px;
-        font-size: 25px;
-        height: 5vh;
-      }
-      a {
-        padding: 0 10px;
-        color: white;
-        text-decoration: none;
-      }
-            .mainDiv {
-                background-color: rgb(255, 255, 255);
-                justify-content: center;
-           
-            }
-            
-            input{
-                background-color: white;
-               
-                width: 30vw;
-                padding: 20px;
-                margin: 20px;
-            }
-            .photoInput{
-                height: 10vh;
-                background-color: gainsboro;
-            }
-            form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-            .addButton{
-                font-size: 20px;
-                font-weight: bolder;
-                width: 10vw;
-                height: 8vh;
-                margin: 20px;
-                padding: 10px;
-                background-color: black;
-                color: white;
-            }
-            h2{
-              
-                font-size: 50px;
-             
-            }
-            
-        </style>
-</head> 
-  
-<body> 
+<style type="text/css" media="screen">
+  body {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    font-size: 25px;
+    height: 5vh;
+  }
+  a {
+    padding: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  .mainDiv {
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+  }
+
+  input {
+    background-color: white;
+
+    width: 30vw;
+    padding: 20px;
+    margin: 20px;
+  }
+  .photoInput {
+    height: 10vh;
+    background-color: gainsboro;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .addButton {
+    font-size: 20px;
+    font-weight: bolder;
+    width: 10vw;
+    height: 8vh;
+    margin: 20px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+  }
+  h2 {
+    font-size: 50px;
+  }
+</style>
+<body>
     <nav>
         <a href="/">Da-Manager</a>
-  
+      
         <a href="./login">Admin</a>
       </nav>
-   
-<div class="mainDiv">
-
-    
-    
-    <form method="post" action="/login" >
-        <h2>Sign In </h2>
-        <input type="text" placeholder="Email" name="email" required >
-        <br>
-        <input type="password" placeholder="Password" name="password" required >
-
-        <br>
-
-        <br>
-        <button class="addButton"  submit="/login" > Login </button>
-    </form>
-    
-</div>
-
-</body> 
-  
-</html>
+      
+      <div class="mainDiv">
+        <form method="post" action="/login">
+          <h2>Sign In</h2>
+          <input type="text" placeholder="Email" name="email" required />
+          <br />
+          <input type="password" placeholder="Password" name="password" required />
+      
+          <br />
+      
+          <br />
+          <button class="addButton" submit="/login">Login</button>
+        </form>
+      </div>
+</body>

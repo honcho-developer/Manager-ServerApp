@@ -1,75 +1,94 @@
-
 <style type="text/css" media="screen">
-    body {
-        padding: 0;
-        margin: 0;
-        cursor: pointer;
-    }
+  body {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    input {
-      padding: 20px;
-      margin: 10px;
-      width: 30vw;
-    }
-    a{
-      color: white;
-      text-decoration: none;
-    }
-            .mainDiv {
-                background-color: rgb(255, 255, 255);
-                justify-content:center ;
-            }
-            
-            input{
-                background-color: white;
-                width: 60vw;
-                padding: 20px;
-                margin: 20px;
-            }
-            .photoInput{
-                height: 10vh;
-                background-color: gainsboro;
-            }
-            .addButton{
-                font-size: 20px;
-                width: 10vw;
-                height: 8vh;
-                margin: 20px;
-                padding: 10px;
-                border: none;
-                background-color: black;
-                color: white;
-                cursor: pointer;
-            }
-            h2{
-                border-bottom: 3px solid black;
-            }
+  input {
+    padding: 20px;
+    margin: 10px;
+    width: 30vw;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .mainDiv {
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+  }
+
+  input {
+    background-color: white;
+    width: 60vw;
+    padding: 20px;
+    margin: 20px;
+  }
+  .photoInput {
+    height: 10vh;
+    background-color: gainsboro;
+  }
+  .addButton {
+    font-size: 20px;
+    width: 10vw;
+    height: 8vh;
+    margin: 20px;
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+  h2 {
+    border-bottom: 3px solid black;
+  }
 </style>
 
-<div>
-    <form  method="post" >
-        <h2>Edit Post</h2>
-        <input type="text" placeholder="Enter Name" name="user_name"  value="<%=userDetail.user_name%>" required />
-        <br>
-        <input type="text" placeholder="Product Description" name="user_product" value="<%=userDetail.user_product%>" required/>
-
-        <br>
-
-        <input type="number" placeholder="Enter Price" name="user_price" value="<%=userDetail.user_price%>" required />
-        <br>
-        
-        <!-- <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.photo%>" required  /> -->
-        <br>
-        
-        
-        <button class="addButton" submit="edit/:id">Post </button>
-
-    </form>
-
-</div>
+<body>
+    <div>
+    
+   
+        <form method="post">
+          <h2>Edit Post</h2>
+          <input
+            type="text"
+            placeholder="Enter Name"
+            name="user_name"
+            value="<%=userDetail.user_name%>"
+            required
+          />
+          <br />
+          <input
+            type="text"
+            placeholder="Product Description"
+            name="user_product"
+            value="<%=userDetail.user_product%>"
+            required
+          />
+      
+          <br />
+      
+          <input
+            type="number"
+            placeholder="Enter Price"
+            name="user_price"
+            value="<%=userDetail.user_price%>"
+            required
+          />
+          <br />
+      
+          <!-- <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.photo%>" required  /> -->
+          <br />
+      
+          <button class="addButton" submit="edit/:id">Post</button>
+        </form>
+      </div>
+      
+</body>

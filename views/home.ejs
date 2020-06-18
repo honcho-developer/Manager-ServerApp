@@ -1,7 +1,4 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Home Page</title> 
+
     <style type="text/css" media="screen">
         body{
             padding: 0;
@@ -70,23 +67,27 @@
                 border-bottom: 3px solid black;
                 font-size: 50px;
             }
+            .flashMsg{
+              text-align: center;
+              color: burlywood;
+            }
             
         </style>
-</head> 
-  
-<body> 
-  
+
     <nav>
         <a href="/"> Home</a>
-        <div class="navLi">
-          <a href="/add_direct">New Product</a>
+      
           <a href="/display">Products</a>
-        </div>
       </nav>
       
 <div class="mainDiv">
   
- 
+ <div class="flashMsg">
+          <% if( locals.message) { %>
+            <h1><%= message %></h1>
+        <% } %>
+         </div>
+        
   <form method="post" enctype="multipart/form-data"  >
    
     <h2>Add New Product</h2>
@@ -109,7 +110,4 @@
    
 </div>
 
-</body> 
-  
-</html>
 

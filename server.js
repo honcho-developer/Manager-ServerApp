@@ -174,7 +174,7 @@ app.post("/add_direct", upload.single("photo"), function (req, res) {
     if (err) {
       res.render("home", { message: "User registered not successfully!" });
     } else {
-      res.render("home", { message: "User registered successfully!" });
+      res.render("home", { message: "Product added successfully!" });
     }
   });
 });
@@ -198,9 +198,10 @@ app.get("/display", function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        var noMatch;
+        var noMatch = '';
         if(Direct.length < 1){
-           noMatch = "No products found, please try again"
+           noMatch = "No products found, please try again.";
+    
         }
         res.render("display", { users: users, noMatch: noMatch });
         console.log(users);
@@ -226,7 +227,7 @@ app.get("/deleteAll", (req, res) => {
       res.send(removed);
       
     } else {
-      res.render('home');
+      res.render("home", { message: "Delete Succesful" });
     }
   });
 });
@@ -237,8 +238,12 @@ app.get("/deleteOne/:id", (req, res) => {
     if (removed) {
       res.send(removed);
       
-    } else {
+      req.flash('error_msg', 'Record Not Deleted');
       res.render('home');
+    } else {
+      
+      res.render("home", { message: " Delete Succesful" });
+    
     }
   });
   
@@ -262,7 +267,7 @@ app.post('/edit/:id' ,upload.single("photo"), function(req, res) {
           res.render('edit/' + req.params.id);
       } else {
           
-          res.render('home');
+        res.render("home", { message: "Changes Saved" });
       }
   });
 });
