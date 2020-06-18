@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
-  <body>
     <style type="text/css" media="screen">
       body {
         padding: 0;
         margin: 0;
-        align-items: center;
+        
+        font-family: monserrat;
       }
 
       nav {
@@ -20,7 +19,7 @@
         padding: 40px;
         color: white;
         font-size: 30px;
-        height: 10vh;
+        height: 5vh;
       }
 
       .mainDiv {
@@ -29,16 +28,11 @@
         width: 100%;
       }
 
-      .searchBar {
-        width: 70%;
-        height: 7vh;
-        font-size: 15px;
-        margin: 20px;
-        border-bottom: 3px solid black;
+      .search{
+        padding: 0 20px;
       }
-
       .searchBar {
-        width: 45%;
+        width: 31%;
         height: 4vh;
         font-size: 15px;
         padding: 10px;
@@ -49,7 +43,7 @@
       }
       .searchButton {
         width: 9vw;
-        background-color: rgb(28, 198, 255);
+        background-color: rgb(199, 206, 209);
         border: none;
         height: 7vh;
         width: 7vw;
@@ -61,12 +55,11 @@
       .container {
         background-color: rgba(255, 255, 255, 0.986);
         display: flex;
-        border: 0.1px solid grey;
-        border-radius: 20px;
+       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         flex-direction: column;
         width: 25%;
-        height: 59vh;
-        padding: 20px;
+        height: 60vh;
+        padding-bottom: 30px ;
         margin: 20px;
         color: black;
       }
@@ -85,16 +78,20 @@
       a {
         text-decoration: none;
         padding: 0 15px;
-        font-size: 30px;
+        font-size: 25px;
         color: white;
       }
       h2{
-                border-bottom: 17px solid green;
                 padding: 10px 0;
                 font-size: 50px;
                
             }
     </style>
+  </head>
+  
+  <body>
+  
+    
     <nav>
       <a href="/"> Home</a>
       <div class="navLi">
@@ -102,10 +99,7 @@
         <a href="/display">Products</a>
       </div>
     </nav>
-    <br />
-    <br />
-    <br />
-    
+    <h2>Products</h2>
     <div class="search">
       <input
         class="searchBar"
@@ -121,7 +115,6 @@
     <br />
     <br />
     <div class="mainDiv">
-      <h2>Products</h2>
       <div class="containerDiv">
         <% users.forEach(function(user) { %>
         <div class="container">
@@ -129,24 +122,32 @@
             <img class="containerImage" src="<%=user.photo%>" />
           </div>
           <div class="pText">
-            <p style="font-size: 30px; font-weight: bolder; color: darkgreen;"><%=user.user_name%></p>
+            <p style="font-size: 22px; font-weight: bold; color: black;"><%=user.user_name%></p>
             <p style="font-size: 17px;""><%=user.user_product%></p>
-            <p style="font-size: 17px;""><%=user.user_price%></p>
+            <p style="font-size: 17px;""> <span>$ <%=user.user_price%></span></p>
           </div>
          
 
-          <div>
+          <div style="padding: 15px 5px; display: flex; justify-content: space-between;">
+            
             <a
+            
               class="aDisplay"
-              href="/edit/<%= user._id %>"
-              style="color: orange;"
-              >Edit</a
+              href="deleteOne/<%= user._id %>"
+              style="color: black; 
+              padding: 5px 10px; font-weight: bold;"
+              >Delete</a
             >
             <a
               class="aDisplay"
-              href="deleteOne/<%= user._id %>"
-              style="color: red;"
-              >Delete</a
+              href="/edit/<%= user._id %>"
+              style="background-color: black; 
+              border: 1px solid black;
+              color: white;
+              margin: 0 10px;
+              padding: 5px 25px; 
+              font-weight: bold;"
+              >Edit</a
             >
           </div>
         </div>
@@ -158,16 +159,16 @@
     <br>
     <br>
     <br>
-    <hr style="border: 10px solid green;">
-    
+ 
+    <hr>
        <a style="width:8vw;
        height: 5vh; 
         float: right;
-        color: white; 
+        color: black; 
         text-decoration: none;
-        background-color: red;
-        padding: 15px;
-        margin: 15px;
+        background-color: transparent;
+        padding: 10px 20px;
+        margin: 10px 85px;
         border: 2px solid black;
         border-radius: 5px;
         font-weight: bolder;

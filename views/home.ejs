@@ -6,7 +6,7 @@
         body{
             padding: 0;
             margin: 0;
-            align-items: center;
+            font-family: monserrat;
             cursor: pointer;
         }
         nav {
@@ -15,8 +15,8 @@
       justify-content: space-between;
       padding: 40px;
       color: white;
-      font-size: 30px;
-      height: 10vh;
+      font-size: 25px;
+      height: 5vh;
     }
 
 
@@ -63,6 +63,7 @@
                 margin: 20px;
                 padding: 10px;
                 background-color: black;
+                cursor: pointer;
                 color: white;
             }
             h2{
@@ -86,6 +87,7 @@
 <div class="mainDiv">
    
   <form method="post" enctype="multipart/form-data" action="/add_direct"  >
+   
     <h2>Add New Product</h2>
     <input type="text" placeholder="Product Name" name="user_name" required >
     <br>
@@ -98,7 +100,7 @@
     <input class="photoInput" type="file"  name="photo" required   />
 
     <br>
-    <button class="addButton"  submit="/add_direct" >Post </button>
+    <button class="addButton"  submit="/add_direct" >Add </button>
 </form>
  
   </div>
