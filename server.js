@@ -179,17 +179,6 @@ app.post("/add_direct", upload.single("photo"), function (req, res) {
   });
 });
 
-//FILTER FUNCTION
-
-// app.get('/filter', (req, res) => {
-
-//   const {db} = req.body
-//   db.collection('mydb').find().toArray((err, result) => {
-//     if (err) return console.log(err)
-//     
-//     res.render('dispay', {mydb: result})
-//   })
-// })
 
 app.get("/display", function (req, res) {
   if(req.query.search){
@@ -198,10 +187,10 @@ app.get("/display", function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        var noMatch = '';
+        var noMatch;
         if(Direct.length < 1){
            noMatch = "No products found, please try again.";
-    
+           res.render("display", { users: users, noMatch: noMatch });
         }
         res.render("display", { users: users, noMatch: noMatch });
         console.log(users);
@@ -261,33 +250,26 @@ app.get("/edit/:id", function (req, res) {
   });
 });
 app.post('/edit/:id' ,upload.single("photo"), function(req, res) {
-  Direct.findByIdAndUpdate(req.params.id, req.body, function(err) {
-      if (err) {
-          
-          res.render('edit/' + req.params.id);
-      } else {
-          
-        res.render("home", { message: "Changes Saved" });
-      }
-  });
+  const mybodydata = {
+      user_name: req.body.user_name,
+      user_product: req.body.user_product,
+      user_price: req.body.user_price,
+      photo: req.file.path,
+    };
+    const direct = Direct(mybodydata);
+  Direct.findByIdAndUpdate(req.params.id, mybodydata, function(err) {
+    
+  //var data = UsersModel(req.body);
+  if (err) {
+    res.render('edit/');
+} else {
+
+  res.render("home", { message: "Changes Saved" });
+}
+})
 });
 
-// function areYouSureDelete() {
-//   swal({
-//     title: "Are you sure you wish to delete this record?",
-//     type: "warning",
-//     showCancelButton: true,
-//     confirmButtonColor: '#DD6B55',
-//     confirmButtonText: 'Yes, delete it!',
-//     closeOnConfirm: false,
-// }.then((value) => {
-//   if(value){
-//            //ajax call or other action to delete the blog
-//         swal("Deleted!", "Your imaginary file has been deleted!", "success");
-//      }else{
-//        //write what you want to do
-//       }
-//  })); };
+
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

@@ -11,11 +11,6 @@
     align-items: center;
   }
 
-  input {
-    padding: 20px;
-    margin: 10px;
-    width: 30vw;
-  }
   a {
     color: white;
     text-decoration: none;
@@ -27,7 +22,7 @@
 
   input {
     background-color: white;
-    width: 60vw;
+    width: 40vw;
     padding: 20px;
     margin: 20px;
   }
@@ -49,14 +44,19 @@
   h2 {
     border-bottom: 3px solid black;
   }
+  .containerImage {
+        width: 25vw;
+        height: 30vh;
+      }
 </style>
 
 <body>
+
     <div>
-    
-   
-        <form method="post">
-          <h2>Edit Post</h2>
+  
+        <form method="post"  enctype="multipart/form-data">
+         
+          <h2>Edit Product</h2>
           <input
             type="text"
             placeholder="Enter Name"
@@ -83,11 +83,14 @@
             required
           />
           <br />
+          
+            
+            
       
-          <!-- <input class="photoInput" type="file"  name="photo" required  value="<%=userDetail.photo%>" required  /> -->
+          <input class="photoInput" type="file"  name="photo"  required  />
           <br />
       
-          <button class="addButton" submit="edit/:id">Post</button>
+          <button class="addButton">Submit</button>
         </form>
       </div>
       

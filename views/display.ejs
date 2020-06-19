@@ -148,11 +148,12 @@
       <div class="mainDiv">
      
         <div class="containerDiv">
-          <!-- <div>
-            <% if( locals.noMatch === locals.length) { %>
-              <h3><% locals.noMatch %></h3>
-          <% } %>
-           </div> -->
+          <div>
+          
+            <!-- <% if( locals.noMatch != undefined) { %>
+              <h3><%= "gfjdhcx" %></h3>
+          <% } %> -->
+           </div>
           <% users.forEach(function(user) { %>
           <div class="container">
             <div>
@@ -166,8 +167,8 @@
            
   
             <div style="padding: 15px 5px; display: flex; justify-content: space-between;">
-              
-              <a
+
+                <a
               
                 class="aDisplay"
                 href="deleteOne/<%= user._id %>"
@@ -176,9 +177,11 @@
                 padding: 5px 15px; font-weight: bold;
                 border: 1px solid black;
                 "
-                
+                onclick="return confirm('Are you sure you wish to delete this Product?');"
                 >Delete</a
               >
+
+             
               <a
                 class="aDisplay"
                 href="/edit/<%= user._id %>"
@@ -195,7 +198,8 @@
           <% }) %>
           
         </div>
-        
+     
+          
       </div>
       <br>
       <br>
@@ -214,5 +218,7 @@
           border-radius: 5px;
           font-weight: bolder;
            font-size: x-large;
-           cursor: pointer;" href="deleteAll/<%=users.userDetail%>">Delete All</a>
+           cursor: pointer;" href="deleteAll/<%=users.userDetail%>"
+           onclick="return confirm('Are you sure you wish to delete All Product?');"
+           >Delete All</a>
     </body>
