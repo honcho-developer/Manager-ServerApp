@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
+    background-image: linear-gradient(to right, #1e130c 0%, #cabcb5 51%, #1e130c 100%);
   }
 
   form {
@@ -28,13 +29,13 @@
   }
   .photoInput {
     height: 10vh;
-    background-color: gainsboro;
+    background-color: white;
   }
   .addButton {
     font-size: 20px;
     width: 10vw;
     height: 8vh;
-    margin: 20px;
+    margin: 20px 123px;
     padding: 10px;
     border: none;
     background-color: black;
@@ -48,6 +49,19 @@
         width: 25vw;
         height: 30vh;
       }
+      .btnLink{
+        width: 10vw;
+        margin: 30px  125px ;
+        background-color: transparent;
+        border: 1px solid black;
+        height: 5vh;
+      }
+      .btnLinkA{
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      
 </style>
 
 <body>
@@ -55,6 +69,8 @@
     <div>
   
         <form method="post"  enctype="multipart/form-data">
+         
+          
          
           <h2>Edit Product</h2>
           <input
@@ -86,12 +102,16 @@
           
             
             
-      
-          <input class="photoInput" type="file"  name="photo"  required  />
+          
+          <input class="photoInput" type="file" name="photo"  required  />
           <br />
-      
-          <button class="addButton" onclick="return confirm('Are you sure you wish to edit this Product?');" >Submit</button>
+          <div class="btnDiv">
+            <button class="addButton" onclick="return confirm('Are you sure you wish to update this Product?');" >Submit</button>
+            <button class="btnLink">  <a class="btnLinkA" href="/display">Cancel</a></button>
+          </div>
+         
         </form>
+        
       </div>
       
 </body>

@@ -134,11 +134,12 @@ app.post("/login", (req, res, next) => {
         email: req.body.email,
         password: hash,
       });
+      res.render("main", { req: req  }, );
       user
       .save()
       .then(result => {
         console.log(result)
-        res.render("home", { req: req  }, );
+        res.render("main", { req: req  }, );
       })
       .catch(err => {
         console.log(err)
@@ -146,6 +147,17 @@ app.post("/login", (req, res, next) => {
          err: err
         })
       })
+    }
+  });
+});
+
+app.get("/main", function (req, res) {
+  Direct.find(function (err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("main", { users: users });
+      console.log(users);
     }
   });
 });
@@ -162,19 +174,20 @@ app.get("/add_direct", function (req, res) {
 });
 app.post("/add_direct", upload.single("photo"), function (req, res) {
 
-  const mybodydata = {
+  const mybody = {
     user_name: req.body.user_name,
     user_product: req.body.user_product,
     user_price: req.body.user_price,
     photo: req.file.path,
   };
-  const direct = Direct(mybodydata);
+  const direct = Direct(mybody);
   //var data = UsersModel(req.body);
   direct.save(function (err) {
     if (err) {
+      res.send(err)
       res.render("home", { message: "User registered not successfully!" });
     } else {
-      res.render("home", { message: "Product added successfully!" });
+      res.render("main", { message: "Product added successfully!" });
     }
   });
 });
@@ -216,7 +229,7 @@ app.get("/deleteAll", (req, res) => {
       res.send(removed);
       
     } else {
-      res.render("home", { message: "Delete Succesful" });
+      res.render("main", { message: "Delete All Succesful" });
     }
   });
 });
@@ -231,7 +244,7 @@ app.get("/deleteOne/:id", (req, res) => {
       res.render('home');
     } else {
       
-      res.render("home", { message: " Delete Succesful" });
+      res.render("main", { message: " Delete Succesful" });
     
     }
   });
@@ -264,7 +277,7 @@ app.post('/edit/:id' ,upload.single("photo"), function(req, res) {
     res.render('edit/');
 } else {
 
-  res.render("home", { message: "Changes Saved" });
+  res.render("main", { message: "Changes Saved" });
 }
 })
 });

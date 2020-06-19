@@ -5,6 +5,7 @@
             margin: 0;
             font-family: monserrat;
             cursor: pointer;
+            background-image: linear-gradient(to right, #1e130c 0%, #cabcb5 51%, #1e130c 100%);
         }
         nav {
       background-color: black;
@@ -35,8 +36,9 @@
       text-decoration: none;
     }
             .mainDiv {
-                background-color: rgb(255, 255, 255);
+             
                 justify-content:center ;
+                height: fit-content;
             }
             
             input{
@@ -47,7 +49,7 @@
             }
             .photoInput{
                 height: 10vh;
-                background-color: gainsboro;
+                background-color: white;
             }
             .addButton{
                 font-size: 20px;
@@ -73,16 +75,10 @@
     <nav>
         <a href="/"> Home</a>
       
-          <a href="/display">Products</a>
+          <a href="/main">Display</a>
       </nav>
       
 <div class="mainDiv">
-  
- <div class="flashMsg">
-          <% if( locals.message) { %>
-            <h1><%= message %></h1>
-        <% } %>
-         </div>
         
   <form method="post" enctype="multipart/form-data"  >
    
