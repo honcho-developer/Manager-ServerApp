@@ -1,4 +1,5 @@
 body {
+  height: fit-content;
     padding: 0;
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -30,6 +31,16 @@ body {
   .headLink {
     display: flex;
 
+  }
+  .errSrc{
+    text-align: center;
+  }
+  .srcLinkA {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+   text-decoration: show;
   }
 
   .btnLink {
@@ -75,7 +86,7 @@ body {
   }
 
   h2 {
-    padding-left: 40px;
+    padding: 5px 4px 0 40px;
     font-size: 35px;
   }
 
@@ -83,16 +94,16 @@ body {
     display: grid;
     grid-gap: 20px;
     width: 50%;
-      height: 28vh;
+    height: 28vh;
     background-color: rgba(255, 255, 255, 0.986);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     margin: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
   }
   
   .containerImage {
       width: 100%;
-      height: auto
+      height: 275;
   }
   .containerDiv {
     display: flex;
@@ -119,21 +130,20 @@ body {
   }
 
   .delAll {
-    width: 8vw;
     height: 5vh;
-    float: right;
-    width: auto;
+    width: 15vw;
+    text-align: center;
     height: auto;
     color: black;
     text-decoration: none;
     background-color: transparent;
-    padding: 10px 20px;
-    margin: 10px 85px;
+    padding: 10px 20px ;
+    margin: 20px 80px ;
+    float: right;
     border: 2px solid black;
     border-radius: 5px;
     font-weight: bolder;
     font-size: x-large;
-    cursor: pointer;
   }
 
 

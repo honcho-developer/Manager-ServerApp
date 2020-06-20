@@ -207,9 +207,9 @@ app.get("/display", function (req, res) {
         console.log(err);
       } else {
         var noMatch;
+
         if(Direct.length < 1){
-           noMatch = "No products found, please try again.";
-           res.render("display", { users: users, noMatch: noMatch });
+           noMatch = "No products found, please search name of product.";        
         }
         res.render("display", { users: users, noMatch: noMatch });
         console.log(users);

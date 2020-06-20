@@ -1,0 +1,22 @@
+footer{
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    color: black;
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 5vh;
+    padding: 20px 0;
+    font-size: medium;
+    
+}
+h4{
+    padding-top: 30px;
+}
+
+@media screen and (min-width: 990px){
+   footer{
+    height: 10vh;
+    font-size: small;
+   }
+}
+

@@ -1,48 +1,44 @@
 <link href="/cssResp/clientView.css" rel="stylesheet" type="text/css">
+<link href="/cssResp/footer.css" rel="stylesheet" type="text/css">
+<body>
+ <div> 
+  <nav>
+    <a href="/">Da-ManagerBase</a>
 
-    <body>
-      <nav>
-        <a href="/">Da-ManagerBase</a>
+    <a href="./login">Admin</a>
+  </nav>
+  <div class="headerSearch">
+    <h2>Products</h2>
+    <form class="search" action="/" method="GET">
+
+      <input class="searchBar" name="search" type="text" placeholder="Search For Products ......." />
+
+      <input class="searchButtons" value="Search" type="submit" />
+
+    </form>
+
+
+  </div>
+
+  <div class="containerDiv">
+    <% users.forEach(function(user) { %>
+    <div class="container">
+      <div>
+        <img class="containerImage" src="<%=user.photo%>" />
+      </div>
+      <div class="pText">
+        <p style="font-size: 20px; font-weight: bolder; color: black;"><%=user.user_name%></p>
+        <p style="font-size: 17px;"><%=user.user_product%></p>
+        <p style="font-size: 17px;"><span>$ <%=user.user_price%></span></p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
   
-        <a href="./login">Admin</a>
-      </nav>
-      <div class="headerSearch">
-          <h2>Products</h2>
-      <form class="search" action="/display" method="GET">
-        
-        <input
-          class="searchBar"
-          name="search"
-          type="text"
-          placeholder="Search For Products ......."
-        />
-      
-        <input
-          class="searchButtons"
-          value="Search"
-          type="submit"
-        />
-       
-      </form>
-      
-     
-      </div>
-        
-          <div class="containerDiv">
-            <% users.forEach(function(user) { %>
-            <div class="container">
-              <div>
-                <img class="containerImage" src="<%=user.photo%>" />
-              </div>
-              <div class="pText">
-                <p style="font-size: 20px; font-weight: bolder; color: black;"><%=user.user_name%></p>
-                <p style="font-size: 17px;"><%=user.user_product%></p>
-                <p style="font-size: 17px;"><span>$ <%=user.user_price%></span></p>
-              </div>
-            </div>
-            <% }) %>
-          </div>
-        </div>
-      </div>
-    </body>
+  </div>
 
+<br>
+<br>
+<%- include('footer') %> 
+ 
+</body>
