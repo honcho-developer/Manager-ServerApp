@@ -2,7 +2,7 @@
   body {
     padding: 0;
     margin: 0;
-    font-family: monserrat;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     cursor: pointer;
   }
 
@@ -33,19 +33,21 @@
     align-items: center;
   }
   .btnLink {
-    width: 20vw;
+    width: 16vw;
     background-image:linear-gradient(to right, #1e130c 0%, #8f847f 51%, #1e130c 100%);
     border: 2px solid black;
-    height: 10vh;
+    padding: 10px 5px;
+    height: auto;
     color: white;
   }
  
   button {
-    width: 20vw;
+    width: 16vw;
     margin: 10px 5px;
+    padding: 10px 5px;
     background-image: linear-gradient(to right, #485563 0%, #29323c 51%, #485563 100%);
     border: 2px solid black;
-    height: 10vh;
+    height: auto;
   }
   .flashMsg {
       padding-top: 30px;
@@ -57,23 +59,25 @@
   }
 </style>
 
-<div class="mainDiv">
+<body>
+  <div class="mainDiv">
   
-  <div class="letterHeads">
-    <h1 style="font-size: 45px; padding-bottom: 40px;">Da-ManagerBase, Do More for Less Time.</h1>
-    
+    <div class="letterHeads">
+      <h1 style="font-size: 45px; padding-bottom: 40px;">Da-ManagerBase, Do More for Less Time.</h1>
+      
+    </div>
+    <div class="mainBody">
+      <button class="btnLink">
+        <a class="btnLinkA" href="/add_direct">Add New</a>
+      </button>
+      <button>
+        <a href="/display">Products</a>
+      </button>
+    </div>
+    <div class="flashMsg">
+      <% if( locals.message) { %>
+      <h1><%= message %></h1>
+      <% } %>
+    </div>
   </div>
-  <div class="mainBody">
-    <button class="btnLink">
-      <a class="btnLinkA" href="/add_direct">Add New</a>
-    </button>
-    <button>
-      <a href="/display">Products</a>
-    </button>
-  </div>
-  <div class="flashMsg">
-    <% if( locals.message) { %>
-    <h1><%= message %></h1>
-    <% } %>
-  </div>
-</div>
+</body>
