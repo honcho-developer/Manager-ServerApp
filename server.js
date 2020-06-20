@@ -3,8 +3,6 @@ const app = express();
 const session = require('express-session')
 const flash = require('req-flash');
 const cookieParser = require('cookie-parser');
-const swat = require('sweetalert')
-const path = require("path");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
@@ -12,7 +10,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const Direct = require("./models/directSchema");
 const User = require("./models/adminSchema");
-const { renderFile } = require("ejs");
 const db = process.env.MONGODB_URL;
 
 
@@ -20,6 +17,7 @@ const db = process.env.MONGODB_URL;
 // Set EJS as templating engine
 app.set("view engine", "ejs");
 app.set("views",__dirname + "/views");
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static("uploads"));
 app.use(cookieParser())
@@ -28,15 +26,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
 
+//Using express-session
 app.use(session({
   secret: 'djhxcvxfgshajfgjhgsjhfgsakjeauytsdfy',
   resave: false,
   saveUninitialized: true
   }));
 
-  app.use(flash());
+   // Using req-flash, Global variables
+app.use(flash());
  
- // Global variables
 app.use(function(req, res, next){
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
@@ -46,7 +45,7 @@ app.use(function(req, res, next){
 
 
 
-
+// Connecting to database.
 
 mongoose
   .connect(
@@ -64,7 +63,7 @@ mongoose
     console.log({ err });
   });
 
-//UPLOAD IMAGE
+// Using Multer to UPLOAD IMAGE, this is used in the 'add_direct route'
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -92,14 +91,9 @@ const upload = multer({
   fileFilter: fileFilter,
 });
 
-app.post("/add", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      res.status(400).send("Something went wrong!");
-    }
-    res.send(req.file);
-  });
-});
+
+
+//Getting the index file, which is 'clientView'
 app.get("/", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
@@ -111,7 +105,8 @@ app.get("/", function (req, res) {
   });
 });
 
-//SIGNUP
+//Getting LOGIN 
+
 app.get("/login", (req, res) => {
   User.find(function (err, users) {
     if (err) {
@@ -123,6 +118,8 @@ app.get("/login", (req, res) => {
   });
 });
 
+
+// Posting LOGIN
 app.post("/login", (req, res, next) => {
   bcrypt.hash(req.body.password, 10, (err, hash) => {
     if (err) {
@@ -151,6 +148,8 @@ app.post("/login", (req, res, next) => {
   });
 });
 
+
+//Getting display, which is the 'main route'
 app.get("/main", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
@@ -162,6 +161,8 @@ app.get("/main", function (req, res) {
   });
 });
 
+
+// Getting The form route, which is 'home'
 app.get("/add_direct", function (req, res) {
   Direct.find(function (err, users) {
     if (err) {
@@ -172,6 +173,10 @@ app.get("/add_direct", function (req, res) {
     }
   });
 });
+
+
+// Posting the form route
+
 app.post("/add_direct", upload.single("photo"), function (req, res) {
 
   const mybody = {
@@ -193,6 +198,7 @@ app.post("/add_direct", upload.single("photo"), function (req, res) {
 });
 
 
+// Getting all product, which is the 'display route'
 app.get("/display", function (req, res) {
   if(req.query.search){
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -222,6 +228,13 @@ app.get("/display", function (req, res) {
   
 });
 
+// Regular expression, to fiter the search field in display route
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
+
+// DeleteAll route
 app.get("/deleteAll", (req, res) => {
   Direct.deleteMany((req.params), ( removed) => {
     if (removed) {
@@ -233,6 +246,8 @@ app.get("/deleteAll", (req, res) => {
     }
   });
 });
+
+// Delete by :id route
 
 app.get("/deleteOne/:id", (req, res) => {
   console.log(req.params);
@@ -251,6 +266,8 @@ app.get("/deleteOne/:id", (req, res) => {
   
 });
 
+
+// Getting the edit/:id route
 app.get("/edit/:id", function (req, res) {
   console.log(req.params.id);
   Direct.findById(req.params.id, function (err, user) {
@@ -262,6 +279,9 @@ app.get("/edit/:id", function (req, res) {
     }
   });
 });
+
+
+// postint the edit/:id route
 app.post('/edit/:id' ,upload.single("photo"), function(req, res) {
   const mybodydata = {
       user_name: req.body.user_name,
@@ -284,10 +304,7 @@ app.post('/edit/:id' ,upload.single("photo"), function(req, res) {
 
 
 
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
-
+// Local host port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);

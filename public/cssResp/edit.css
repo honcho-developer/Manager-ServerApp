@@ -1,0 +1,104 @@
+body {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: linear-gradient(
+    to right,
+    #1e130c 0%,
+    #cabcb5 51%,
+    #1e130c 100%
+  );
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+.mainDiv {
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+}
+
+input {
+  background-color: white;
+  width: 40vw;
+  height: 4vh;
+  font-size: x-large;
+  padding: 20px;
+  margin: 20px;
+}
+.photoInput {
+  height: 10vh;
+  background-color: white;
+}
+.addButton {
+  font-size: 30px;
+  width: 13vw;
+  height: 5vh;
+  margin: 20px 80px;
+  padding: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+h2 {
+  border-bottom: 3px solid black;
+  font-size: 40px;
+}
+.containerImage {
+  width: 25vw;
+  height: 30vh;
+}
+.btnLink {
+  width: 10vw;
+  margin: 30px 80px;
+  background-color: transparent;
+  border: 1px solid black;
+  font-size: 30px;
+  height: 3vh;
+}
+.btnLinkA {
+  color: black;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+@media screen and (min-width: 990px) {
+  a {
+    font-size: 35px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  input {
+    height: auto;
+    font-size: 12px;
+  }
+  .photoInput {
+    height: 20vh;
+  }
+  .addButton {
+    font-size: 20px;
+    width: 15vw;
+    height: auto;
+  }
+  .btnLink {
+    width: 10vw;
+    margin: 30px 80px;
+    background-color: transparent;
+    border: 1px solid black;
+    height: 6vh;
+  }
+  .btnLinkA {
+    color: black;
+    font-size: 15px;
+  }
+}

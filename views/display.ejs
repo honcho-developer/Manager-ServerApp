@@ -1,228 +1,77 @@
+<link href="/cssResp/display.css" rel="stylesheet" type="text/css">
+<body>
+  <nav>
+    <a class="navA" href="/"> Home</a>
+    <a class="navA" href="/main">Display</a>
+  </nav>
+  <div class="headerSearch">
+    <div class="headLink">
+      <h2>Products</h2>
+      <button class="btnLink"> <a class="btnLinkA" href="/add_direct">Add New</a></button>
+    </div>
+    <form class="search" action="/display" method="GET">
 
-    <style type="text/css" media="screen">
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-      }
+      <input class="searchBar" name="search" type="text" placeholder="Search For Products ......." />
 
-      nav {
-        background-color: black;
-        display: flex;
-        justify-content: space-between;
-        padding: 40px;
-        color: white;
-        font-size: 30px;
-        height: 5vh;
-      }
+      <input class="searchButton" value="Search" type="submit" />
 
-      .mainDiv {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-      .headerSearch{
-        display: flex;
-        justify-content: space-between;
-        background-color: white;
-        padding: 10px;
-      }
-      .headLink{
-        display: flex;
-       
-      }
-      .btnLink{
-        width: auto;
-        margin: 30px  5px ;
-        background-color: transparent;
-        border: 1px solid black;
-        height: auto;
-      }
-      .btnLinkA{
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      .search {
-        width: 50%;
-        display: flex;
-        padding: 10px 5px;
-      }
-      
-      .searchButton {
-        width: 10vw;
-        padding: 5px 5px;
-        font-size: 20px;
-        margin: 20px 0;
-        background-color: rgb(199, 206, 209);
-        border: none;
-        height: 5vh;
-        
-      }
-      .searchBar{
-        width: 30vw;
-        height: 5vh;
-        font-size: 15px;
-        padding: 10px;
-        margin: 20px;
-        background-color: rgb(255, 255, 255);
-    
-        border: 1px solid black;
-      }
-      h2 {
-        padding-left: 40px;
-        font-size: 35px;
-      }
-      .container {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  background-color: rgba(255, 255, 255, 0.986);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  margin: 20px;
-  width: 40vw;
-  padding-bottom:  20px;
-}
-.containerDiv {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-  
-      .containerImage {
-        width: 40vw;
-        height: auto;
-      }
-      
-      .pText{
-        padding: 0 15px;
-      }
-      a {
-        text-decoration: none;
-        padding: 0 15px;
-        font-size: 20px;
-        color: white;
-      }
-      .navA{
-        text-decoration: none;
-        padding: 0 10px;
-        font-size: 25px;
-        color: white;
-      }
-      .delAll{width:8vw;
-         height: 5vh; 
-          float: right;
-          width: auto;
-          height: auto;
-          color: black; 
-          text-decoration: none;
-          background-color: transparent;
-          padding: 10px 20px;
-          margin: 10px 85px;
-          border: 2px solid black;
-          border-radius: 5px;
-          font-weight: bolder;
-           font-size: x-large;
-           cursor: pointer;}
-    </style>
+    </form>
 
-    
-    <body>
-      <nav>
-        <a class="navA" href="/"> Home</a>
-          <a class="navA" href="/main">Display</a>
-      </nav>
-      <div class="headerSearch">
-        <div class="headLink">
-          <h2>Products</h2>
-          <button class="btnLink">  <a class="btnLinkA" href="/add_direct">Add New</a></button>
-        </div>
-      <form class="search" action="/display" method="GET">
-        
-        <input
-          class="searchBar"
-          name="search"
-          type="text"
-          placeholder="Search For Products ......."
-        />
-      
-        <input
-          class="searchButton"
-          value="Search"
-          type="submit"
-        />
-       
-      </form>
-      
-     
-      </div>
-      <br />
-      <br />
-      <br />
-     
-      <div class="mainDiv">
-     
-        <div class="containerDiv">
-          <div>
-          
-            <!-- <% if( locals.noMatch != undefined) { %>
+
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="mainDiv">
+
+    <div class="containerDiv">
+      <div>
+
+        <!-- <% if( locals.noMatch != undefined) { %>
               <h3><%= "gfjdhcx" %></h3>
           <% } %> -->
-           </div>
-          <% users.forEach(function(user) { %>
-          <div class="container">
-            <div>
-              <img class="containerImage" src="<%=user.photo%>" />
-            </div>
-            <div class="pText">
-              <p style="font-size: 22px; font-weight: bold; color: black;"><%=user.user_name%></p>
-              <p style="font-size: 17px;""><%=user.user_product%></p>
-              <p style="font-size: 17px;""> <span>$ <%=user.user_price%></span></p>
-            </div>
-           
-  
-            <div style="padding: 15px 5px; display: flex; justify-content: space-between;">
+      </div>
+      <% users.forEach(function(user) { %>
+      <div class="container">
+        <div>
+          <img class="containerImage" src="<%=user.photo%>" />
+        </div>
+        <div class="pText">
+          <p style="font-size: 22px; font-weight: bold; color: black;"><%=user.user_name%></p>
+          <p style="font-size: 17px;""><%=user.user_product%></p>
+              <p style=" font-size: 17px;""> <span>$ <%=user.user_price%></span></p>
+        </div>
 
-                <a
-              
-                class="aDisplay"
-                href="deleteOne/<%= user._id %>"
-                style="color: black; 
+
+        <div style="padding: 15px 5px; display: flex; justify-content: space-between;">
+
+          <a class="aDisplay" href="deleteOne/<%= user._id %>" style="color: black; 
                 margin-left: 10px;
                 padding: 5px 15px; font-weight: bold;
                 border: 1px solid black;
-                "
-                onclick="return confirm('Are you sure you wish to delete this Product?');"
-                >Delete</a
-              >
+                " onclick="return confirm('Are you sure you wish to delete this Product?');">Delete</a>
 
-             
-              <a
-                class="aDisplay"
-                href="/edit/<%= user._id %>"
-                style="background-color: black; 
+
+          <a class="aDisplay" href="/edit/<%= user._id %>" style="background-color: black; 
                 border: 1px solid black;
                 color: white;
                 margin: 0 10px;
                 padding: 5px 25px; 
-                font-weight: bold;"
-                >Edit</a
-              >
-            </div>
-          </div>
-          <% }) %>
-          
+                font-weight: bold;">Edit</a>
         </div>
-     
-          
       </div>
-      <br>
-      <br>
-      <br>
-   
-      <hr>
-         <a  href="deleteAll/<%=users.userDetail%>"
-          class="delAll"
-           onclick="return confirm('Are you sure you wish to delete All Product?');"
-           >Delete All</a>
-    </body>
+      <% }) %>
+
+    </div>
+
+
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <hr>
+  <a href="deleteAll/<%=users.userDetail%>" class="delAll"
+    onclick="return confirm('Are you sure you wish to delete All Product?');">Delete All</a>
+</body>

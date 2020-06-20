@@ -1,105 +1,31 @@
+<link href="/cssResp/home.css" rel="stylesheet" type="text/css">
 
-    <style type="text/css" media="screen">
-        body{
-            padding: 0;
-            margin: 0;
-           font-family: Verdana, Geneva, Tahoma, sans-serif;
-            cursor: pointer;
-            background-image: linear-gradient(to right, #1e130c 0%, #cabcb5 51%, #1e130c 100%);
-        }
-        nav {
-      background-color: black;
-      display: flex;
-      justify-content: space-between;
-      padding: 40px;
-      color: white;
-      font-size: 25px;
-      height: 5vh;
-    }
+<nav>
+  <a href="/"> Home</a>
 
+  <a href="/main">Display</a>
+</nav>
 
-
-    h4 {
-      align-self: center;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-   
-    a{
-        padding: 0 10px;
-      color: white;
-      text-decoration: none;
-    }
-            .mainDiv {
-             
-                justify-content:center ;
-                height: fit-content;
-            }
-            
-            input{
-                background-color: white;
-                width: 40vw;
-                padding: 20px;
-                margin: 20px;
-            }
-            .photoInput{
-                height: 10vh;
-                background-color: white;
-            }
-            .addButton{
-                font-size: 20px;
-                width: 10vw;
-                height: 8vh;
-                margin: 20px;
-                padding: 10px;
-                background-color: black;
-                cursor: pointer;
-                color: white;
-            }
-            h2{
-                border-bottom: 3px solid black;
-                font-size: 35px;
-            }
-            .flashMsg{
-              text-align: center;
-              color: burlywood;
-            }
-            
-        </style>
-
-    <nav>
-        <a href="/"> Home</a>
-      
-          <a href="/main">Display</a>
-      </nav>
-      
 <div class="mainDiv">
-        
-  <form method="post" enctype="multipart/form-data"  >
-   
+
+  <form method="post" enctype="multipart/form-data">
+
     <h2>New Product</h2>
-    <input type="text" placeholder="Product Name" name="user_name" required >
+    <input type="text" placeholder="Product Name" name="user_name" required>
     <br>
-    <input type="text" placeholder="Product Description" name="user_product" required >
+    <input type="text" placeholder="Product Description" name="user_product" required>
 
     <br>
 
-    <input type="number" placeholder="Enter Price" name="user_price" required >
+    <input type="number" placeholder="Enter Price" name="user_price" required>
     <br>
-    <input class="photoInput" type="file"  name="photo" required   />
+    <input class="photoInput" type="file" name="photo" required />
 
     <br>
-    <button class="addButton"  submit="/add_direct" >Add </button>
-</form>
- 
-  </div>
-  
-   
+    <button class="addButton" submit="/add_direct">Add </button>
+  </form>
+
 </div>
 
 
+</div>

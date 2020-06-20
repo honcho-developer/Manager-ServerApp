@@ -1,0 +1,172 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    color: white;
+    font-size: 30px;
+    height: 5vh;
+  }
+
+  .mainDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .headerSearch {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+  }
+
+  .headLink {
+    display: flex;
+
+  }
+
+  .btnLink {
+    width: auto;
+    margin: 30px 5px;
+    background-color: transparent;
+    border: 1px solid black;
+    height: 3vh;
+  }
+
+  .btnLinkA {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .search {
+    width: 50%;
+    display: flex;
+    padding: 10px 5px;
+  }
+
+  .searchButton {
+    width: 10vw;
+    padding: 5px 5px;
+    font-size: 20px;
+    margin: 20px 0;
+    background-color: rgb(199, 206, 209);
+    border: none;
+    height: 3vh;
+
+  }
+
+  .searchBar {
+    width: 30vw;
+    height: 3vh;
+    font-size: 15px;
+    padding: 10px;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+
+    border: 1px solid black;
+  }
+
+  h2 {
+    padding-left: 40px;
+    font-size: 35px;
+  }
+
+  .container {
+    display: grid;
+    grid-gap: 20px;
+    width: 50%;
+      height: 28vh;
+    background-color: rgba(255, 255, 255, 0.986);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    margin: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .containerImage {
+      width: 100%;
+      height: auto
+  }
+  .containerDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pText {
+    padding: 0 15px;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0 15px;
+    font-size: 20px;
+    color: white;
+  }
+
+  .navA {
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 40px;
+    color: white;
+  }
+
+  .delAll {
+    width: 8vw;
+    height: 5vh;
+    float: right;
+    width: auto;
+    height: auto;
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    padding: 10px 20px;
+    margin: 10px 85px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: x-large;
+    cursor: pointer;
+  }
+
+
+  @media screen and (min-width: 990px) {
+    .container {
+        display: grid;
+        grid-gap: 20px;
+        background-color: rgba(255, 255, 255, 0.986);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        margin: 20px;
+        width: 40vw;
+        height: auto;
+        padding-bottom: 20px;
+      }
+      
+      .containerImage {
+        width: 40vw;
+        height: auto;
+      }
+
+    .navA {
+      font-size: 20px;
+    }
+
+    .searchButton {
+      height: 8vh;
+    }
+
+    .searchBar {
+      height: 8vh;
+    }
+
+    .btnLink {
+      height: 8vh;
+    }
+  }
