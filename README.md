@@ -2,7 +2,7 @@
 
 DataBase App created using Node.js, Express, Mongo DB and EJS.
 
-##Table of contest
+##Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
